@@ -29,7 +29,7 @@ const validate = values => {
 
   if (email == '') {
     errors.Email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email.trim())) {
     errors.Email = 'Invalid email address';
   }
   if (pass == '') {

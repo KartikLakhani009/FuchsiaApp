@@ -6,12 +6,20 @@ import {Field, reduxForm} from 'redux-form';
 //component
 import TextFunc from '../TextAuthFunc';
 
+//lib
+import validate from '../../lib/validation';
+
 //styles
 import styles from '../../Config/commanStyle';
 
 class LoginForm extends Component {
+  LoginAction = values => {
+    console.log(' LoGin Action Values : ', values);
+    alert('Working');
+    // return this.props.navigation.navigate('WelcomeT');
+  };
   render() {
-    const {} = this.props;
+    const {handleSubmit} = this.props;
     return (
       <View>
         <Field
@@ -29,10 +37,8 @@ class LoginForm extends Component {
           component={TextFunc}
         />
         <TouchableOpacity
-          style={styles.btnSubmit}
-          onPress={() => {
-            alert('button pressed');
-          }}>
+          style={[styles.btnSubmit, {marginTop: '5%'}]}
+          onPress={handleSubmit(this.LoginAction)}>
           <Text style={styles.btnText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -43,10 +49,10 @@ class LoginForm extends Component {
 withForm = reduxForm({
   form: 'Login',
   // enableReinitialize: true,
-  //   validate,
-  //   onSubmitSuccess: (result, dispatch, props) => {
-  //     return props.navigation.navigate('WelcomeT');
-  //   },
+  validate,
+  onSubmitSuccess: (result, dispatch, props) => {
+    return props.navigation.navigate('WelcomeT');
+  },
 });
 
 mapStateToProps = state => {

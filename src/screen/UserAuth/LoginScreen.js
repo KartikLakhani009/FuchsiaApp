@@ -33,7 +33,7 @@ class LoginScreen extends Component {
           Login
         </Text>
         <Text style={styles.SubTitle}>Login to join the Fuchsia platform.</Text>
-        <LoginForm />
+        <LoginForm {...this.props} />
         <TouchableOpacity
           style={[
             commonstyles.btnSubmit,

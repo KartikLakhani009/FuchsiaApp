@@ -9,11 +9,13 @@ import {createStackNavigator} from 'react-navigation-stack';
 import WelcomeT from '../screen/WelcomeText';
 import LoginScreen from '../screen/UserAuth/LoginScreen';
 import RegisterScreen from '../screen/UserAuth/RegisterScreen';
+// import WelcomeT from '../screen/WelcomeText';
 
 const AuthStack = createStackNavigator(
   {
     LoginScreen: {screen: LoginScreen},
     RegisterScreen: {screen: RegisterScreen},
+    WelcomeT: {screen: WelcomeT},
   },
   {
     headerMode: 'none',

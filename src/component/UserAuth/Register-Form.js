@@ -6,12 +6,24 @@ import {Field, reduxForm} from 'redux-form';
 //component
 import TextFunc from '../TextAuthFunc';
 
+//lib
+import validate from '../../lib/validation';
+
 //styles
 import styles from '../../Config/commanStyle';
 
 class RegisterFrom extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  Register = values => {
+    console.log('values :', values);
+    alert('Working');
+    // return this.props.navigation.navigate('WelcomeT');
+  };
   render() {
-    const {} = this.props;
+    const {handleSubmit} = this.props;
     return (
       <View>
         <Field
@@ -43,10 +55,8 @@ class RegisterFrom extends Component {
           component={TextFunc}
         />
         <TouchableOpacity
-          style={styles.btnSubmit}
-          onPress={() => {
-            alert('button pressed');
-          }}>
+          style={[styles.btnSubmit, {marginTop: '5%'}]}
+          onPress={handleSubmit(this.Register)}>
           <Text style={styles.btnText}>Register</Text>
         </TouchableOpacity>
       </View>
@@ -55,12 +65,12 @@ class RegisterFrom extends Component {
 }
 
 withForm = reduxForm({
-  form: 'Login',
+  form: 'Register',
   // enableReinitialize: true,
-  //   validate,
-  //   onSubmitSuccess: (result, dispatch, props) => {
-  //     return props.navigation.navigate('WelcomeT');
-  //   },
+  validate: validate,
+  onSubmitSuccess: (result, dispatch, props) => {
+    return props.navigation.navigate('WelcomeT');
+  },
 });
 
 mapStateToProps = state => {
