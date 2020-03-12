@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
   SubTitle: {
     fontSize: AppStyle.fontSizeH4,
     color: AppStyle.COLOR.slateGrey,
-    marginBottom: '15%',
+    marginBottom: '10%',
   },
 });
