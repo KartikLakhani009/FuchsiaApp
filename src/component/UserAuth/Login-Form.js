@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
@@ -10,6 +10,8 @@ import TextFunc from '../TextAuthFunc';
 import validate from '../../lib/validation';
 import loginUser from '../../lib/API/methods/loginUser';
 
+import {USERSTORE} from '../../statics/GlobalStatics';
+
 //styles
 import styles from '../../Config/commanStyle';
 
@@ -17,15 +19,20 @@ class LoginForm extends Component {
   LoginAction = async values => {
     console.log(' LoGin Action Values : ', values);
     // alert('Working');
-    let res = await loginUser(
-      values.Email.trim().toLowerCase(),
-      values.Password,
-    );
+    let data = {
+      email: values.Email.trim().toLowerCase(),
+      password: values.Password,
+      token: '',
+    };
+    let res = await loginUser(data.email, data.password);
     console.log('res Datat from loginform :  ', res);
     if (!res.token) {
       alert('error invalid access');
     } else {
-      alert('Token ', res.token);
+      data.token = res.token;
+      console.log('Final Store Data : ', data);
+      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data));
+      // alert('Token ', res.token);
       return this.props.navigation.navigate('UserListScreen');
     }
   };

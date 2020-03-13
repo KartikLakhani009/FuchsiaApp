@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  AsyncStorage,
 } from 'react-native';
 
 //component
@@ -15,10 +16,28 @@ import LoginForm from '../../component/UserAuth/Login-Form';
 import commonstyles from '../../Config/commanStyle';
 import AppStyle from '../../Config/AppStyle';
 
+import {USERSTORE} from '../../statics/GlobalStatics';
+
 //APPName do it later
 import app_Details from '../../../app.json';
 
 class LoginScreen extends Component {
+  async UNSAFE_componentWillMount() {
+    AsyncStorage.clear();
+    AsyncStorage.getItem(USERSTORE)
+      .then(res => {
+        console.log('Login Screen ->res : ', res);
+        if (res != null) {
+          user = JSON.parse(res);
+          console.log('User  :', user);
+          return this.props.navigation.navigate('UserListScreen', {
+            userInfo: user,
+          });
+        }
+      })
+      .catch(err => console.log('err : ', err));
+  }
+
   render() {
     const {
       navigation: {navigate},

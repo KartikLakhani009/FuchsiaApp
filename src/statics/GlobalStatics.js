@@ -16,3 +16,7 @@ export const userList = 'users?page=2';
 export const LOGINUSER = 'login';
 
 export const REGISTERUSER = 'register';
+
+//Storage
+
+export const USERSTORE = 'USER';

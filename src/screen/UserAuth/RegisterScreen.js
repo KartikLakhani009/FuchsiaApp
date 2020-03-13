@@ -36,7 +36,7 @@ class RegisterScreen extends Component {
               Register
             </Text>
             <Text style={styles.SubTitle}>Join our event platform.</Text>
-            <RegisterFrom />
+            <RegisterFrom {...this.props} />
           </ScrollView>
         </KeyboardAvoidingView>
       </View>

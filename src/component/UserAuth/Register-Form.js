@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, AsyncStorage} from 'react-native';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
@@ -8,6 +8,9 @@ import TextFunc from '../TextAuthFunc';
 
 //lib
 import validate from '../../lib/validation';
+import RegisterAPI from '../../lib/API/methods/GenericAPIMethord';
+
+import {REGISTERUSER, USERSTORE} from '../../statics/GlobalStatics';
 
 //styles
 import styles from '../../Config/commanStyle';
@@ -17,13 +20,44 @@ class RegisterFrom extends Component {
     super(props);
   }
 
-  Register = values => {
+  Register = async values => {
     console.log('values :', values);
-    alert('Working');
-    let data = {};
-    // return this.props.navigation.navigate('WelcomeT');
+    // alert('Working');
+    let data = {
+      email: values.Email.trim().toLowerCase(),
+      password: values.Password,
+    };
+    let data2 = {
+      email: values.Email.trim().toLowerCase(),
+      password: values.Password,
+      token: '',
+    };
+    let res = await RegisterAPI(REGISTERUSER, data, 'post', null);
+
+    // console.log('Register-From :  res For API : ', res);
+
+    if (!res.token) {
+      alert('error invalid access');
+    } else {
+      data2.token = res.token;
+      console.log('Final Store Data : ', data2);
+      alert('demo ');
+      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data2))
+        .then(res => {
+          console.log('Async Res :', res);
+          return res;
+        })
+        .catch(error => {
+          console.error('Asycn Error : ', error);
+        });
+      console.log('datta from AsyncStorage : ');
+      alert('Token ', res.token);
+      return this.props.navigation.navigate('UserListScreen');
+    }
   };
   render() {
+    // console.log('Register-From : props : ', this.props);
+
     const {handleSubmit} = this.props;
     return (
       <View>
@@ -69,9 +103,9 @@ withForm = reduxForm({
   form: 'Register',
   // enableReinitialize: true,
   validate: validate,
-  onSubmitSuccess: (result, dispatch, props) => {
-    return props.navigation.navigate('WelcomeT');
-  },
+  // onSubmitSuccess: (result, dispatch, props) => {
+  //   return props.navigation.navigate('WelcomeT');
+  // },
 });
 
 mapStateToProps = state => {
