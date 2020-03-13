@@ -20,6 +20,7 @@ class RegisterFrom extends Component {
   Register = values => {
     console.log('values :', values);
     alert('Working');
+    let data = {};
     // return this.props.navigation.navigate('WelcomeT');
   };
   render() {
