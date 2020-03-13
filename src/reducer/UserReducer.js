@@ -1,4 +1,7 @@
-import {FETCH_USER_LIST_ACTION} from '../statics/GlobalStatics';
+import {
+  FETCH_USER_LIST_ACTION,
+  FILTER_USER_BY_ID,
+} from '../statics/GlobalStatics';
 
 const userdata = {
   users: [],

@@ -19,6 +19,36 @@ class UserListScreen extends Component {
     }
   }
 
+  GetUserById = id => {
+    const {
+      UserList: {users},
+      navigation: {navigate},
+    } = this.props;
+
+    // console.log(' Id  ', id);
+
+    // let res = users.find(user => {
+    //   console.log('useer  :  ', user);
+    //   if (Number(user.id) === Number(id)) {
+    //     return user;
+    //   } else return 'Error';
+    // });
+
+    let res = users.filter(user => user.id == id);
+
+    // console.log(' res :  USe : ', res);
+
+    if (res == undefined) {
+      alert('There is no record ');
+    } else {
+      // console.log('User Details : res : ', res);
+
+      return navigate('UserDetailsScreen', {
+        userinfo: res[0],
+      });
+    }
+  };
+
   render() {
     const {
       UserList: {users},
@@ -37,6 +67,7 @@ class UserListScreen extends Component {
               <View>
                 <TouchableOpacity
                   style={{
+                    marginTop: '2%',
                     minWidth: 150,
                     height: 50,
                     alignItems: 'center',
@@ -49,9 +80,7 @@ class UserListScreen extends Component {
                     shadowRadius: 20,
                     shadowOffset: {height: 10, width: 5},
                   }}
-                  onPress={() => {
-                    alert('button pressed');
-                  }}>
+                  onPress={() => this.GetUserById(item.id)}>
                   <Text
                     style={{color: 'white', textAlign: 'center', fontSize: 16}}>
                     {item.email}
@@ -70,7 +99,7 @@ export default Withuser(UserListScreen);
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    marginHorizontal: '1.5%',
+    marginHorizontal: '2%',
     marginTop: '2%',
   },
   header: {

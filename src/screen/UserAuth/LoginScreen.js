@@ -23,7 +23,7 @@ import app_Details from '../../../app.json';
 
 class LoginScreen extends Component {
   async UNSAFE_componentWillMount() {
-    AsyncStorage.clear();
+    // AsyncStorage.clear();
     AsyncStorage.getItem(USERSTORE)
       .then(res => {
         console.log('Login Screen ->res : ', res);

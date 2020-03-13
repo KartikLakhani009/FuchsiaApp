@@ -8,6 +8,8 @@ export const FETCH_USER_LIST_ACTION = 'FETCH_USER_LIST_ACTION';
 
 export const FETCH_USER_DETAIL_ACTION = 'FETCH_USER_DETAIL_ACTION';
 
+export const FILTER_USER_BY_ID = 'FILTER_USER_DATA_BY_ID';
+
 //API :
 export const BASEAPI = 'https://reqres.in/api/';
 

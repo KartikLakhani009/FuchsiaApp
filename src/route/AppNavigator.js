@@ -10,7 +10,7 @@ import WelcomeT from '../screen/WelcomeText';
 import LoginScreen from '../screen/UserAuth/LoginScreen';
 import RegisterScreen from '../screen/UserAuth/RegisterScreen';
 import UserListScreen from '../screen/UserListScreen';
-// import WelcomeT from '../screen/WelcomeText';
+import UserDetailsScreen from '../screen/UserDetailsScreen';
 
 const AuthStack = createStackNavigator(
   {
@@ -18,6 +18,7 @@ const AuthStack = createStackNavigator(
     RegisterScreen: {screen: RegisterScreen},
     WelcomeT: {screen: WelcomeT},
     UserListScreen: {screen: UserListScreen},
+    UserDetailsScreen: {screen: UserDetailsScreen},
   },
   {
     headerMode: 'none',
