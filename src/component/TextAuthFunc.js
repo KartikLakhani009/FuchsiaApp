@@ -21,6 +21,7 @@ const TextFunc = props => {
         value={value}
         onChangeText={onChange}
         returnKeyType="next"
+        autoCapitalize={false}
         secureTextEntry={secureTextEntry}
       />
       {/* <Text style={styles.error}>

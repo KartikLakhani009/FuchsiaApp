@@ -13,7 +13,7 @@ export const FetchUserList = payload => {
         } else console.error('Error : ', response);
       })
       .then(json => {
-        console.log(json);
+        // console.log(json);
         dispatch({
           type: FETCH_USER_LIST_ACTION,
           payload: json.data,

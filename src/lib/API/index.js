@@ -1,6 +1,6 @@
 // General api to access data
 import {BASEAPI} from '../../statics/GlobalStatics';
-export default function api(path, params, method, token) {
+export default async function api(path, params, method, token) {
   let options;
   options = {
     headers: {
@@ -12,14 +12,14 @@ export default function api(path, params, method, token) {
     ...(params && {body: JSON.stringify(params)}),
   };
 
-  return fetch(BASEAPI + path, options)
+  return await fetch(BASEAPI + path, options)
     .then(response => {
       if (response.ok) {
         return response.json();
       } else console.error('Error : ', response);
     })
     .then(json => {
-      console.log('API Data : ', json);
+      // console.log('API Data : ', json);
       return json;
     })
     .catch(error => {
