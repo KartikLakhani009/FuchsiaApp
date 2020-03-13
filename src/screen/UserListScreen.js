@@ -32,6 +32,7 @@ class UserListScreen extends Component {
         <View style={styles.container}>
           <FlatList
             data={users}
+            keyExtractor={item => item.id.toString()}
             renderItem={({item}) => (
               <View>
                 <TouchableOpacity
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: AppStyle.COLOR.windowsBlue,
-    height: '15%',
+    height: AppStyle.responsiveHeight(10),
     justifyContent: 'center',
   },
   headerText: {

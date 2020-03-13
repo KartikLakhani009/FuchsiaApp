@@ -10,7 +10,8 @@ export default (state = userdata, action) => {
     case FETCH_USER_LIST_ACTION:
       let list = action.payload;
       if (list) {
-        alert('List Is Empty');
+        // alert('List Is Empty');
+        console.log('List IS empty :', list);
       }
       return {...state, users: list, firstTime: true};
     default:

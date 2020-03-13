@@ -13,6 +13,6 @@ export const BASEAPI = 'https://reqres.in/api/';
 
 export const userList = 'users?page=2';
 
-export const LoginUser = 'login';
+export const LOGINUSER = 'login';
 
-export const registerUSer = 'register';
+export const REGISTERUSER = 'register';

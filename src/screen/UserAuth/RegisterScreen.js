@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
+} from 'react-native';
 
 //component
 import RegisterFrom from '../../component/UserAuth/Register-Form';
@@ -19,15 +26,19 @@ class RegisterScreen extends Component {
           ]}>
           Fuchsia
         </Text>
-        <Text
-          style={[
-            commonstyles.Title,
-            {color: AppStyle.COLOR.darkIndigo, fontWeight: 'bold'},
-          ]}>
-          Register
-        </Text>
-        <Text style={styles.SubTitle}>Join our event platform.</Text>
-        <RegisterFrom />
+        <KeyboardAvoidingView behavior={'padding'}>
+          <ScrollView>
+            <Text
+              style={[
+                commonstyles.Title,
+                {color: AppStyle.COLOR.darkIndigo, fontWeight: 'bold'},
+              ]}>
+              Register
+            </Text>
+            <Text style={styles.SubTitle}>Join our event platform.</Text>
+            <RegisterFrom />
+          </ScrollView>
+        </KeyboardAvoidingView>
       </View>
     );
   }
