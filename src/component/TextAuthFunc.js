@@ -24,7 +24,7 @@ const TextFunc = props => {
         value={value}
         onChangeText={onChange}
         returnKeyType={returnKeyType}
-        autoCapitalize={autoCapitalize}
+        // autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
         onSubmitEditing={onSubmitEdit}
       />

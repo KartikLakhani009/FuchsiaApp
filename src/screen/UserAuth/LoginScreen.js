@@ -26,7 +26,7 @@ class LoginScreen extends Component {
     // AsyncStorage.clear();
     AsyncStorage.getItem(USERSTORE)
       .then(res => {
-        console.log('Login Screen ->res : ', res);
+        // console.log('Login Screen ->res : ', res);
         if (res != null) {
           user = JSON.parse(res);
           console.log('User  :', user);

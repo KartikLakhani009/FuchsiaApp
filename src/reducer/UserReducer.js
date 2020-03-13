@@ -12,7 +12,7 @@ export default (state = userdata, action) => {
   switch (action.type) {
     case FETCH_USER_LIST_ACTION:
       let list = action.payload;
-      if (list) {
+      if (!list) {
         // alert('List Is Empty');
         console.log('List IS empty :', list);
       }
