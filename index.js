@@ -10,6 +10,7 @@ import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import rootreducer from './src/reducer/index';
 import AppNavigator from './src/route/AppNavigator';
+import thunk from 'redux-thunk';
 
 //Screen
 // import RegistrationForm from './src/screen/UserFrom/RegistrationForm';
@@ -30,7 +31,7 @@ import AppNavigator from './src/route/AppNavigator';
 //   };
 // }
 
-const store = createStore(rootreducer);
+const store = createStore(rootreducer, applyMiddleware(thunk));
 
 const AppContainer = () => {
   return (

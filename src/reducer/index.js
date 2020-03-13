@@ -1,8 +1,9 @@
 import {combineReducers} from 'redux';
-import {reducer} from 'redux-form';
-// import UserReducer from './UserReducer';
+import {reducer as FormReducer} from 'redux-form';
+import UserReducer from './UserReducer';
 
 export default combineReducers({
   // USERAUTH: UserReducer,
-  form: reducer,
+  form: FormReducer,
+  user: UserReducer,
 });
