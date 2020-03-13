@@ -9,6 +9,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import WelcomeT from '../screen/WelcomeText';
 import LoginScreen from '../screen/UserAuth/LoginScreen';
 import RegisterScreen from '../screen/UserAuth/RegisterScreen';
+import UserListScreen from '../screen/UserListScreen';
 // import WelcomeT from '../screen/WelcomeText';
 
 const AuthStack = createStackNavigator(
@@ -16,6 +17,7 @@ const AuthStack = createStackNavigator(
     LoginScreen: {screen: LoginScreen},
     RegisterScreen: {screen: RegisterScreen},
     WelcomeT: {screen: WelcomeT},
+    UserListScreen: {screen: UserListScreen},
   },
   {
     headerMode: 'none',
