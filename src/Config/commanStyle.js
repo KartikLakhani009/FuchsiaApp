@@ -16,7 +16,7 @@ export default StyleSheet.create({
     shadowOffset: {height: 10, width: 5},
     // marginTop: '2%',
   },
-  btnText: {color: 'white', textAlign: 'center'},
+  btnText: {color: 'white'},
   Title: {
     fontSize: AppStyle.fontSizeH2,
   },

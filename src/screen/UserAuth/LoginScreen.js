@@ -34,16 +34,15 @@ class LoginScreen extends Component {
         </Text>
         <Text style={styles.SubTitle}>Login to join the Fuchsia platform.</Text>
         <LoginForm {...this.props} />
-        <TouchableOpacity
-          style={[
-            commonstyles.btnSubmit,
-            {marginTop: '5%', justifyContent: 'center', alignSelf: 'center'},
-          ]}
-          onPress={() => {
-            navigate('RegisterScreen');
-          }}>
-          <Text style={commonstyles.btnText}>Registration</Text>
-        </TouchableOpacity>
+        <View style={{marginTop: '5%'}}>
+          <TouchableOpacity
+            style={[commonstyles.btnSubmit]}
+            onPress={() => {
+              navigate('RegisterScreen');
+            }}>
+            <Text style={commonstyles.btnText}>Registration</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
