@@ -9,6 +9,9 @@ const TextFunc = props => {
     meta: {error, touched},
     input: {onChange, value},
     secureTextEntry,
+    returnKeyType,
+    onSubmitEdit,
+    autoCapitalize,
   } = props;
 
   return (
@@ -20,9 +23,10 @@ const TextFunc = props => {
         style={styles.input}
         value={value}
         onChangeText={onChange}
-        returnKeyType="next"
-        // autoCapitalize={false}
+        returnKeyType={returnKeyType}
+        autoCapitalize={autoCapitalize}
         secureTextEntry={secureTextEntry}
+        onSubmitEditing={onSubmitEdit}
       />
       {/* <Text style={styles.error}>
         {touched && error ? '* ' + {error} : null}

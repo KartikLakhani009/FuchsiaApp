@@ -22,7 +22,6 @@ class RegisterFrom extends Component {
 
   Register = async values => {
     console.log('values :', values);
-    // alert('Working');
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
@@ -37,7 +36,7 @@ class RegisterFrom extends Component {
     // console.log('Register-From :  res For API : ', res);
 
     if (!res.token) {
-      alert('error invalid access');
+      alert('error');
     } else {
       data2.token = res.token;
       console.log('Final Store Data : ', data2);
@@ -66,6 +65,11 @@ class RegisterFrom extends Component {
           refField={ref => (this['FirstName'] = ref)}
           placeholder="FirstName"
           secureTextEntry={false}
+          onSubmitEdit={event => {
+            this['LastName'].focus();
+          }}
+          autoCapitalize={false}
+          returnKeyType={'next'}
           component={TextFunc}
         />
         <Field
@@ -73,6 +77,11 @@ class RegisterFrom extends Component {
           refField={ref => (this['LastName'] = ref)}
           placeholder="LastName"
           secureTextEntry={false}
+          onSubmitEdit={event => {
+            this['Email'].focus();
+          }}
+          autoCapitalize={false}
+          returnKeyType={'next'}
           component={TextFunc}
         />
         <Field
@@ -80,6 +89,11 @@ class RegisterFrom extends Component {
           refField={ref => (this['Email'] = ref)}
           placeholder="Email"
           secureTextEntry={false}
+          onSubmitEdit={event => {
+            this['Password'].focus();
+          }}
+          autoCapitalize={false}
+          returnKeyType={'next'}
           component={TextFunc}
         />
         <Field

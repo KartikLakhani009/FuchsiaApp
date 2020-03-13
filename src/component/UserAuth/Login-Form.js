@@ -18,7 +18,6 @@ import styles from '../../Config/commanStyle';
 class LoginForm extends Component {
   LoginAction = async values => {
     console.log(' LoGin Action Values : ', values);
-    // alert('Working');
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
@@ -27,12 +26,11 @@ class LoginForm extends Component {
     let res = await loginUser(data.email, data.password);
     console.log('res Datat from loginform :  ', res);
     if (!res.token) {
-      alert('error invalid access');
+      alert('invalid access');
     } else {
       data.token = res.token;
       console.log('Final Store Data : ', data);
       await AsyncStorage.setItem(USERSTORE, JSON.stringify(data));
-      // alert('Token ', res.token);
       return this.props.navigation.navigate('UserListScreen');
     }
   };
@@ -44,6 +42,11 @@ class LoginForm extends Component {
           name="Email"
           refField={ref => (this['Email'] = ref)}
           placeholder="Email"
+          onSubmitEdit={event => {
+            this['Password'].focus();
+          }}
+          autoCapitalize={false}
+          returnKeyType={'next'}
           secureTextEntry={false}
           component={TextFunc}
         />
