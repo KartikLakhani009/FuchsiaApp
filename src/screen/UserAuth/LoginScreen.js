@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
-  AsyncStorage,
 } from 'react-native';
 
 //component
@@ -25,22 +24,6 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
   }
-
-  // async UNSAFE_componentWillMount() {
-  //   // AsyncStorage.clear();
-  //   AsyncStorage.getItem(USERSTORE)
-  //     .then(res => {
-  //       // console.log('Login Screen ->res : ', res);
-  //       if (res != null) {
-  //         user = JSON.parse(res);
-  //         console.log('User  :', user);
-  //         return this.props.navigation.navigate('UserListScreen', {
-  //           userInfo: user,
-  //         });
-  //       }
-  //     })
-  //     .catch(err => console.log('err : ', err));
-  // }
 
   render() {
     const {

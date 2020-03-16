@@ -20,10 +20,18 @@ export default async function api(path, params, method, token) {
     })
     .then(json => {
       // console.log('API Data : ', json);
-      return json;
+      data = {
+        title: 'succes',
+        json,
+      };
+      return data;
     })
     .catch(error => {
       console.error('API Error :', error);
-      return error;
+      data = {
+        title: 'error',
+        error,
+      };
+      return data;
     });
 }

@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  AsyncStorage,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {AppImages} from '../../Images/index';
 
 //styles
@@ -16,8 +13,10 @@ import {USERSTORE} from '../../statics/GlobalStatics';
 
 class SplashScreen extends Component {
   performTimeConsumingTask = async () => {
+    var i = 1;
     return new Promise(resolve =>
       setTimeout(() => {
+        console.log('Sec : ', i++);
         resolve('result');
       }, 300),
     );
@@ -26,7 +25,10 @@ class SplashScreen extends Component {
   async componentDidMount() {
     // Preload data from an external API
     // Preload data using AsyncStorage
+    // demo = async ()=>{
     const data = await this.performTimeConsumingTask();
+
+    console.log('executive now :');
 
     if (data !== null) {
       let result = await AsyncStorage.getItem(USERSTORE)
@@ -55,6 +57,8 @@ class SplashScreen extends Component {
   }
 
   render() {
+    console.log('Start now : ');
+    // console.log('Navigation Stack  : ', this.props.navigation);
     return (
       <View>
         <ImageBackground
