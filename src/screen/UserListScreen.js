@@ -7,8 +7,9 @@ import {
   TouchableOpacity,
   BackHandler,
   Alert,
-  AsyncStorage,
 } from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
 
 //component
 import Withuser from '../hoc/Withuser';
@@ -24,6 +25,7 @@ import {USERSTORE} from '../statics/GlobalStatics';
 //styles
 import commonstyles from '../Config/commanStyle';
 import AppStyle from '../Config/AppStyle';
+import {NavigationActions} from 'react-navigation';
 
 class UserListScreen extends Component {
   constructor(props) {
@@ -112,7 +114,10 @@ class UserListScreen extends Component {
     if (res == 'error') {
       Alert.alert('There is problem ');
     } else {
-      this.props.navigation.popToTop();
+      this.props.navigation.reset(
+        [NavigationActions.navigate({routeName: 'SplashScreen'})],
+        0,
+      );
     }
   };
 

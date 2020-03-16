@@ -4,21 +4,19 @@ import {
   userList,
 } from '../statics/GlobalStatics';
 
+import Api from '../lib/API/index';
+
 export const FetchUserList = payload => {
   return async dispatch => {
-    await fetch(BASEAPI + userList)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else console.error('Error : ', response);
-      })
-      .then(json => {
-        // console.log(json);
-        dispatch({
-          type: FETCH_USER_LIST_ACTION,
-          payload: json.data,
-        });
-      })
-      .catch(error => console.error('error', error));
+    let res = await Api(userList, null, 'get', null);
+
+    if (res.title == 'succes') {
+      dispatch({
+        type: FETCH_USER_LIST_ACTION,
+        payload: res.json.data,
+      });
+    } else if (res.title == 'error') {
+      alert('There is problem with web server side');
+    }
   };
 };

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, AsyncStorage} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
@@ -8,30 +11,33 @@ import TextFunc from '../TextAuthFunc';
 
 //lib
 import validate from '../../lib/validation';
-import loginUser from '../../lib/API/methods/loginUser';
+import api from '../../lib/API/index';
 
-import {USERSTORE} from '../../statics/GlobalStatics';
+import {USERSTORE, LOGINUSER} from '../../statics/GlobalStatics';
 
 //styles
 import styles from '../../Config/commanStyle';
 
 class LoginForm extends Component {
   LoginAction = async values => {
-    console.log(' LoGin Action Values : ', values);
+    // console.log(' LoGin Action Values : ', values);
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
-      token: '',
     };
-    let res = await loginUser(data.email, data.password);
-    console.log('res Datat from loginform :  ', res);
-    if (!res.token) {
+    let res = await api(LOGINUSER, data, 'post', null);
+    if (res.title == 'error') {
       alert('invalid access');
     } else {
-      data.token = res.token;
-      console.log('Final Store Data : ', data);
-      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data));
-      return this.props.navigation.navigate('UserListScreen');
+      data.token = res.json.token;
+      // console.log('Final Store Data : ', data);
+      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data))
+        .then(res => this.props.navigation.navigate('UserListScreen'))
+        .catch(err => {
+          alert('There is Aysn Problem : try again');
+          console.error('Login-Form  Async Error :  ', err);
+          return err;
+        });
     }
   };
   render() {
@@ -71,9 +77,6 @@ withForm = reduxForm({
   form: 'Login',
   // enableReinitialize: true,
   validate,
-  // onSubmitSuccess: (result, dispatch, props) => {
-  //   return props.navigation.navigate('WelcomeT');
-  // },
 });
 
 mapStateToProps = state => {

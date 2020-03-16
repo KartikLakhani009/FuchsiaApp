@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, AsyncStorage} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
@@ -8,7 +11,7 @@ import TextFunc from '../TextAuthFunc';
 
 //lib
 import validate from '../../lib/validation';
-import RegisterAPI from '../../lib/API/methods/GenericAPIMethord';
+import api from '../../lib/API/index';
 
 import {REGISTERUSER, USERSTORE} from '../../statics/GlobalStatics';
 
@@ -21,37 +24,28 @@ class RegisterFrom extends Component {
   }
 
   Register = async values => {
-    console.log('values :', values);
+    // console.log('values :', values);
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
     };
-    let data2 = {
-      email: values.Email.trim().toLowerCase(),
-      password: values.Password,
-      token: '',
-    };
-    let res = await RegisterAPI(REGISTERUSER, data, 'post', null);
+    let res = await api(REGISTERUSER, data, 'post', null);
 
     // console.log('Register-From :  res For API : ', res);
 
-    if (!res.token) {
-      alert('error');
+    if (res.title == 'error') {
+      alert('Registration error (form token)');
     } else {
-      data2.token = res.token;
-      console.log('Final Store Data : ', data2);
-      alert('demo ');
-      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data2))
+      data.token = res.json.token;
+      await AsyncStorage.setItem(USERSTORE, JSON.stringify(data))
         .then(res => {
-          console.log('Async Res :', res);
-          return res;
+          return this.props.navigation.navigate('UserListScreen');
         })
         .catch(error => {
-          console.error('Asycn Error : ', error);
+          alert('There is Async Problem');
+          console.error('Reguster-Form Asycn Error : ', error);
+          return error;
         });
-      console.log('datta from AsyncStorage : ');
-      alert('Token ', res.token);
-      return this.props.navigation.navigate('UserListScreen');
     }
   };
   render() {

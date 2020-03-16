@@ -11,9 +11,11 @@ import LoginScreen from '../screen/UserAuth/LoginScreen';
 import RegisterScreen from '../screen/UserAuth/RegisterScreen';
 import UserListScreen from '../screen/UserListScreen';
 import UserDetailsScreen from '../screen/UserDetailsScreen';
+import SplashScreen from '../screen/SplashScreen/SplashScreen';
 
 const AuthStack = createStackNavigator(
   {
+    SplashScreen: {screen: SplashScreen},
     LoginScreen: {screen: LoginScreen},
     RegisterScreen: {screen: RegisterScreen},
     WelcomeT: {screen: WelcomeT},
