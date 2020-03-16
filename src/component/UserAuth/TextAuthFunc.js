@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
-import AppStyle from '../Config/AppStyle';
+import AppStyle from '../../Config/AppStyle';
 
 const TextFunc = props => {
   const {

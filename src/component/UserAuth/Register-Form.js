@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
 //component
-import TextFunc from '../TextAuthFunc';
+import TextFunc from './TextAuthFunc';
 
 //lib
 import validate from '../../lib/validation';

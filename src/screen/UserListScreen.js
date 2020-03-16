@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 //component
 import Withuser from '../hoc/Withuser';
+import CardView from '../component/UserList/CardView';
 
 import {
   handleAndroidBackButton,
@@ -128,39 +129,34 @@ class UserListScreen extends Component {
     } = this.props;
     return (
       <View style={{flex: 1}}>
-        <View>
-          <View style={styles.header}>
-            <Text style={styles.headerText}>User List</Text>
-          </View>
-          <View style={styles.container}>
-            <FlatList
-              data={users}
-              keyExtractor={item => item.id.toString()}
-              renderItem={({item}) => (
-                <View>
-                  <TouchableOpacity
-                    style={styles.btnIcon}
-                    onPress={() => this.GetUserById(item.id)}>
-                    <Text
-                      style={{
-                        color: 'white',
-                        textAlign: 'center',
-                        fontSize: 16,
-                      }}>
-                      {item.email}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            />
-          </View>
-        </View>
-        <View style={{flex: 1}}>
+        <View style={[styles.header, {flexDirection: 'row'}]}>
+          <Text style={styles.headerText}>User List</Text>
           <TouchableOpacity style={styles.ViewLogout} onPress={this.logout}>
             <Text style={{color: 'white', textAlign: 'center', fontSize: 16}}>
               Logout
             </Text>
           </TouchableOpacity>
+        </View>
+        <View style={[{flex: 1}, styles.container]}>
+          <View>
+            <FlatList
+              data={users}
+              keyExtractor={item => item.id.toString()}
+              renderItem={({item}) => (
+                <View>
+                  <CardView userinfo={item} Action={this.GetUserById} />
+                </View>
+              )}
+            />
+          </View>
+          {/* //Logout button Plan 
+          <View>
+            <TouchableOpacity style={styles.ViewLogout} onPress={this.logout}>
+              <Text style={{color: 'white', textAlign: 'center', fontSize: 16}}>
+                Logout
+              </Text>
+            </TouchableOpacity>
+          </View> */}
         </View>
       </View>
     );
@@ -172,47 +168,28 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     marginHorizontal: '2%',
-    marginTop: '2%',
+    // marginTop: '2%',
   },
   header: {
     backgroundColor: AppStyle.COLOR.windowsBlue,
     height: AppStyle.responsiveHeight(10),
-    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerText: {
     marginHorizontal: '5%',
     fontSize: AppStyle.fontSizeH3,
     color: 'white',
   },
-  btnIcon: {
-    marginTop: '2%',
-    minWidth: 150,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#2AC062',
-    display: 'flex',
-    borderRadius: 5,
-    shadowColor: '#2AC062',
-    shadowOpacity: 0.4,
-    shadowRadius: 20,
-    shadowOffset: {height: 10, width: 5},
-  },
   ViewLogout: {
     // flex: 1,
     backgroundColor: 'red',
     // justifyContent: 'flex-end',
-    bottom: 0,
-    right: 0,
+    right: '4%',
+    top: '18%',
     position: 'absolute',
     padding: 10,
-    borderRadius: 35,
+    borderRadius: 30,
     // alignItems: 'flex-end',
-    marginBottom: AppStyle.responsiveHeight(3),
-    marginRight: AppStyle.responsiveWidth(6),
-    // backgroundColor: 'transparent',
-  },
-  btnLogout: {
-    backgroundColor: AppStyle.COLOR.windowsBlue,
+    // alignSelf: 'flex-end',
   },
 });
