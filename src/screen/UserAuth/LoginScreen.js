@@ -10,6 +10,9 @@ import {
 
 //component
 import LoginForm from '../../component/UserAuth/Login-Form';
+import Loader from '../../component/LoderModel/Loader';
+
+import withloader from '../../hoc/withloader';
 
 //styles
 import commonstyles from '../../Config/commanStyle';
@@ -25,12 +28,21 @@ class LoginScreen extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    const {LoaderValue, LoaderFired} = this.props;
+    if (LoaderValue == true) {
+      LoaderFired(false);
+    }
+  }
+
   render() {
     const {
       navigation: {navigate},
+      LoaderValue,
     } = this.props;
     return (
       <View style={styles.container}>
+        <Loader loaderShow={false} />
         <Text
           style={[
             commonstyles.header,
@@ -90,7 +102,7 @@ class LoginScreen extends Component {
     );
   }
 }
-export default LoginScreen;
+export default withloader(LoginScreen);
 
 const styles = StyleSheet.create({
   container: {

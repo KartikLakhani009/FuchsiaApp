@@ -3,33 +3,32 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Appstyle from '../../Config/AppStyle';
 
-class CardView extends Component {
-  render() {
-    const {userinfo, Action} = this.props;
-    return (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => {
-          // alert('working');
-          return Action(userinfo.id);
-        }}>
-        <Image
-          source={{
-            uri: userinfo.avatar
-              ? userinfo.avatar
-              : 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
-          }}
-          style={styles.image}></Image>
-        <View style={styles.subcontainer}>
-          <Text style={styles.title}>
-            {userinfo.first_name + ' ' + userinfo.last_name}
-          </Text>
-          <Text style={styles.smallText}>{userinfo.email}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  }
-}
+CardView = props => {
+  const {userinfo, Action} = this.props;
+  return (
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        // alert('working');
+        return Action(userinfo.id);
+      }}>
+      <Image
+        source={{
+          uri: userinfo.avatar
+            ? userinfo.avatar
+            : 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
+        }}
+        style={styles.image}></Image>
+      <View style={styles.subcontainer}>
+        <Text style={styles.title}>
+          {userinfo.first_name + ' ' + userinfo.last_name}
+        </Text>
+        <Text style={styles.smallText}>{userinfo.email}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 export default CardView;
 
 const styles = StyleSheet.create({
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'white',
     alignItems: 'center',
-    shadowOffset: {width: 5, height: 5},
+    shadowOffset: {width: 0, height: 5},
     shadowColor: '#000',
     shadowOpacity: 0.25,
     elevation: 3,
@@ -59,11 +58,11 @@ const styles = StyleSheet.create({
     marginRight: '2.5%',
   },
   title: {
-    fontSize: Appstyle.fontSizeH2,
+    fontSize: Appstyle.fontSizeH3,
     fontWeight: 'bold',
   },
   smallText: {
-    marginBottom: '1%',
+    paddingBottom: '2%',
     fontSize: Appstyle.fontSizeH4,
     color: Appstyle.COLOR.slateGrey,
   },

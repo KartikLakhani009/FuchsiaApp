@@ -6,7 +6,7 @@ import {
 
 import Api from '../lib/API/index';
 
-export const FetchUserList = payload => {
+export const FetchUserList = () => {
   return async dispatch => {
     let res = await Api(userList, null, 'get', null);
 
