@@ -45,6 +45,10 @@ export default {
   isIphone,
   greenLinearGradient: ['#25BC77', '#35E593'],
   orangeLinearGradient: ['#FD5739', '#F3914F'],
+  blueLinearGradinent: ['#3e8dc7', '#479ede'],
+  FBLinearGradinent: ['#7297d1', '#3e5c9b'],
+  TwitterLinearGradinent: ['#4dc6f6', '#22a8f3'],
+  GPlusLinearGradinent: ['#ea725c', '#dd4b39'],
   COLOR: {
     //Blue shades
     windowsBlue: '#3e8dc7',
@@ -56,6 +60,7 @@ export default {
     DEEP_SKY_BLUE: '#00C6F1',
     LIGHT_SEA_GREEN: '#1AB99B',
     darkIndigo: '#0d255e',
+    azure: '#22a8f3',
 
     WHITE: '#FFFFFF',
     BLACK: '#000',

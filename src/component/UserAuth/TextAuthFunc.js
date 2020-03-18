@@ -1,6 +1,14 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import AppStyle from '../../Config/AppStyle';
+import {AppImages} from '../../Images/index';
 
 const TextFunc = props => {
   const {
@@ -11,23 +19,35 @@ const TextFunc = props => {
     secureTextEntry,
     returnKeyType,
     onSubmitEdit,
-    autoCapitalize,
+    TextVisible,
+    VisiblityAction,
   } = props;
 
   return (
     <View>
       <Text style={styles.label}>{placeholder}</Text>
-      <TextInput
-        ref={refField}
-        placeholder={placeholder}
-        style={styles.input}
-        value={value}
-        onChangeText={onChange}
-        returnKeyType={returnKeyType}
-        // autoCapitalize={autoCapitalize}
-        secureTextEntry={secureTextEntry}
-        onSubmitEditing={onSubmitEdit}
-      />
+      <View style={styles.inputView}>
+        <TextInput
+          ref={refField}
+          placeholder={placeholder}
+          value={value}
+          style={styles.input}
+          onChangeText={onChange}
+          returnKeyType={returnKeyType}
+          secureTextEntry={secureTextEntry}
+          onSubmitEditing={onSubmitEdit}
+        />
+        {TextVisible && (
+          <TouchableOpacity
+            style={styles.PassVisibleStyleView}
+            onPress={VisiblityAction}>
+            <Image
+              source={AppImages.PassVisible}
+              style={styles.PassVisibleStyle}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
       {/* <Text style={styles.error}>
         {touched && error ? '* ' + {error} : null}
       </Text> */}
@@ -38,18 +58,24 @@ const TextFunc = props => {
 export default TextFunc;
 
 const styles = StyleSheet.create({
+  inputView: {
+    marginTop: AppStyle.countPixelRatio(10),
+    flexDirection: 'row',
+    width: '100%',
+  },
   input: {
-    marginTop: '2%',
-    height: AppStyle.responsiveHeight(6.5),
+    height: AppStyle.responsiveHeight(6),
     width: '100%',
     borderWidth: 1,
     borderColor: AppStyle.COLOR.Zumthor,
     borderRadius: AppStyle.countPixelRatio(5),
     backgroundColor: '#f9f9f9',
-    marginBottom: '2%',
+    marginBottom: AppStyle.countPixelRatio(10),
+    fontSize: AppStyle.fontSizeParagraph,
   },
   label: {
     color: AppStyle.COLOR.slateGrey,
+    fontSize: AppStyle.fontSizeParagraph,
     // marginTop: '2%',
   },
   error: {
@@ -57,5 +83,18 @@ const styles = StyleSheet.create({
     // marginBottom: '1.5%',
     color: AppStyle.COLOR.RED,
     fontSize: AppStyle.fontSizeH4_5,
+  },
+  PassVisibleStyle: {
+    height: 15,
+    width: 25,
+    resizeMode: 'stretch',
+  },
+  PassVisibleStyleView: {
+    right: '0%',
+    position: 'absolute',
+    // alignSelf: 'center',
+    paddingTop: AppStyle.countPixelRatio(13.3),
+    paddingRight: AppStyle.countPixelRatio(13.3),
+    // backgroundColor: 'red',
   },
 });

@@ -6,17 +6,21 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Image,
 } from 'react-native';
 
 //component
 import LoginForm from '../../component/UserAuth/Login-Form';
 import Loader from '../../component/LoderModel/Loader';
+import ThirdParty from '../../component/ThirdPartySigin/ThirdParty';
 
 import withloader from '../../hoc/withloader';
 
 //styles
 import commonstyles from '../../Config/commanStyle';
 import AppStyle from '../../Config/AppStyle';
+
+import {AppImages} from '../../Images/index';
 
 import {USERSTORE} from '../../statics/GlobalStatics';
 
@@ -36,34 +40,24 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const {
-      navigation: {navigate},
-      LoaderValue,
-    } = this.props;
+    const {navigation, LoaderValue} = this.props;
     return (
       <View style={styles.container}>
-        <Loader loaderShow={false} />
-        <Text
-          style={[
-            commonstyles.header,
-            {marginTop: '10%', marginBottom: '10%'},
-          ]}>
-          Fuchsia
-        </Text>
-        <KeyboardAvoidingView behavior={'height'}>
-          <ScrollView>
-            <Text
-              style={[
-                commonstyles.Title,
-                {color: AppStyle.COLOR.darkIndigo, fontWeight: 'bold'},
-              ]}>
-              Login
-            </Text>
+        <Loader loaderShow={LoaderValue} />
+        <View>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image source={AppImages.BackLogo} style={styles.BackLogo} />
+          </TouchableOpacity>
+        </View>
+        <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
+          <ScrollView style={{flex: 1}}>
+            <Text style={[commonstyles.Title, {}]}>Login</Text>
             <Text style={styles.SubTitle}>
-              Login to join the Fuchsia platform.
+              Login to join the DigiEvent platform.
             </Text>
             <LoginForm {...this.props} />
-            <View style={{marginTop: '5%'}}>
+
+            {/* <View style={{marginTop: '5%'}}>
               <TouchableOpacity
                 style={[commonstyles.btnSubmit]}
                 onPress={() => {
@@ -71,8 +65,8 @@ class LoginScreen extends Component {
                 }}>
                 <Text style={commonstyles.btnText}>Registration</Text>
               </TouchableOpacity>
-            </View>
-            <View style={{marginTop: '5%'}}>
+            </View> */}
+            {/* <View style={{marginTop: '5%'}}>
               <TouchableOpacity
                 style={{
                   minWidth: 150,
@@ -95,6 +89,9 @@ class LoginScreen extends Component {
                   Bypass
                 </Text>
               </TouchableOpacity>
+            </View> */}
+            <View style={styles.ThirdParty}>
+              <ThirdParty />
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
@@ -109,12 +106,26 @@ const styles = StyleSheet.create({
     flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',
-    marginHorizontal: '10%',
+    marginHorizontal: AppStyle.countPixelRatio(23),
     // borderStartColor: '#ffffff',
+  },
+  BackLogo: {
+    marginTop: AppStyle.countPixelRatio(25),
+    height: AppStyle.countPixelRatio(20),
+    width: AppStyle.countPixelRatio(12),
   },
   SubTitle: {
     fontSize: AppStyle.fontSizeH4,
     color: AppStyle.COLOR.slateGrey,
     marginBottom: '15%',
+  },
+
+  ThirdParty: {
+    // bottom: AppStyle.countPixelRatio(0),
+    // position: 'absolute',
+    // marginTop: '55%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    // flex: 1,
   },
 });

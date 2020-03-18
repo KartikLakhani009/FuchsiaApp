@@ -8,7 +8,7 @@ class Loader extends Component {
       <Modal
         animationType={'fade'}
         transparent={true}
-        visible={false}
+        visible={loaderShow}
         onRequestClose={() => console.log('modal close event')}>
         <View style={styles.modal}>
           <ActivityIndicator

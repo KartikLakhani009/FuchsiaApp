@@ -16,10 +16,18 @@ export default async function api(path, params, method, token) {
     .then(response => {
       if (response.ok) {
         return response.json();
-      } else console.error('Error : ', response);
+      } else {
+        console.log('API Error :', response);
+        data = {
+          title: 'error',
+          response,
+        };
+        return data;
+      }
     })
     .then(json => {
-      // console.log('API Data : ', json);
+      console.log('API Data : ', json);
+      if (json.title == 'error') return json;
       data = {
         title: 'succes',
         json,
@@ -27,7 +35,7 @@ export default async function api(path, params, method, token) {
       return data;
     })
     .catch(error => {
-      console.error('API Error :', error);
+      console.log('API Error :', error);
       data = {
         title: 'error',
         error,

@@ -3,8 +3,8 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Appstyle from '../../Config/AppStyle';
 
-CardView = props => {
-  const {userinfo, Action} = this.props;
+const CardView = props => {
+  const {userinfo, Action} = props;
   return (
     <TouchableOpacity
       style={styles.container}

@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
+
+import LinearGradient from 'react-native-linear-gradient';
 
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
@@ -17,8 +19,14 @@ import {USERSTORE, LOGINUSER} from '../../statics/GlobalStatics';
 
 //styles
 import styles from '../../Config/commanStyle';
+import AppStyle from '../../Config/AppStyle';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {hidePassword: true};
+  }
+
   LoginAction = async values => {
     // console.log(' LoGin Action Values : ', values);
     let data = {
@@ -40,10 +48,18 @@ class LoginForm extends Component {
         });
     }
   };
+
+  setPasswordVisibility = () => {
+    console.log('before setPasswordVisibility : ', this.state.hidePassword);
+    this.setState({hidePassword: !this.state.hidePassword});
+    console.log('after setPasswordVisibility : ', this.state.hidePassword);
+  };
+
   render() {
+    console.log('Password visiblity status : ', this.state.hidePassword);
     const {handleSubmit} = this.props;
     return (
-      <View>
+      <View style={{flex: 1, marginTop: '4%'}}>
         <Field
           name="Email"
           refField={ref => (this['Email'] = ref)}
@@ -51,7 +67,6 @@ class LoginForm extends Component {
           onSubmitEdit={event => {
             this['Password'].focus();
           }}
-          autoCapitalize={false}
           returnKeyType={'next'}
           secureTextEntry={false}
           component={TextFunc}
@@ -60,14 +75,38 @@ class LoginForm extends Component {
           name="Password"
           refField={ref => (this['Password'] = ref)}
           placeholder="Password"
-          secureTextEntry={true}
+          secureTextEntry={this.state.hidePassword}
+          VisiblityAction={this.setPasswordVisibility}
+          TextVisible={true}
           component={TextFunc}
         />
-        <TouchableOpacity
-          style={[styles.btnSubmit, {marginTop: '5%'}]}
-          onPress={handleSubmit(this.LoginAction)}>
-          <Text style={styles.btnText}>Login</Text>
-        </TouchableOpacity>
+        <View style={styles.codestyleView}>
+          <TouchableOpacity>
+            <Text style={styles.codestyle}>Have invitation code?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <LinearGradient
+          colors={AppStyle.blueLinearGradinent}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          style={styles.btnSubmit}>
+          <TouchableOpacity
+            style={{width: '100%', alignItems: 'center'}}
+            onPress={handleSubmit(this.LoginAction)}>
+            <Text style={styles.btnText}>Login</Text>
+          </TouchableOpacity>
+        </LinearGradient>
+
+        <View style={styles.ForgetView}>
+          <Text style={styles.ForgetText}>Forgotten your login details?</Text>
+          <TouchableOpacity
+            onPress={() => {
+              alert('button pressed');
+            }}>
+            <Text style={styles.ForgetLink}> Get help login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }

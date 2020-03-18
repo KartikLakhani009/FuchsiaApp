@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Image,
 } from 'react-native';
 
 //component
@@ -15,26 +16,21 @@ import RegisterFrom from '../../component/UserAuth/Register-Form';
 import commonstyles from '../../Config/commanStyle';
 import AppStyle from '../../Config/AppStyle';
 
+import {AppImages} from '../../Images/index';
+
 class RegisterScreen extends Component {
   render() {
+    const {navigation} = this.props;
     return (
       <View style={styles.container}>
-        <Text
-          style={[
-            commonstyles.header,
-            {marginTop: '10%', marginBottom: '10%'},
-          ]}>
-          Fuchsia
-        </Text>
-        <KeyboardAvoidingView behavior={'padding'}>
+        <KeyboardAvoidingView behavior={'height'}>
           <ScrollView>
-            <Text
-              style={[
-                commonstyles.Title,
-                {color: AppStyle.COLOR.darkIndigo, fontWeight: 'bold'},
-              ]}>
-              Register
-            </Text>
+            <View>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image source={AppImages.BackLogo} style={styles.BackLogo} />
+              </TouchableOpacity>
+            </View>
+            <Text style={[commonstyles.Title, {}]}>Register</Text>
             <Text style={styles.SubTitle}>Join our event platform.</Text>
             <RegisterFrom {...this.props} />
           </ScrollView>
@@ -48,11 +44,16 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: '10%',
+    marginHorizontal: AppStyle.countPixelRatio(23),
   },
   SubTitle: {
     fontSize: AppStyle.fontSizeH4,
     color: AppStyle.COLOR.slateGrey,
-    marginBottom: '10%',
+    marginBottom: AppStyle.countPixelRatio(35.5),
+  },
+  BackLogo: {
+    marginTop: AppStyle.countPixelRatio(25),
+    height: AppStyle.countPixelRatio(20),
+    width: AppStyle.countPixelRatio(12),
   },
 });
