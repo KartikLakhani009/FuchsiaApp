@@ -41,11 +41,30 @@ export default {
   fontSizeH5: (deviceType == 'phone' ? 8 : 10) * ratioCount,
   fontSizeParagraph: (deviceType == 'phone' ? 14 : 16) * ratioCount,
 
-  fontLight: APP_FONTS.LATO_LIGHT,
-  fontRegular: APP_FONTS.LATO_REGULAR,
-  fontMedium: APP_FONTS.LATO_MEDIUM,
-  fontBold: APP_FONTS.LATO_BOLD,
-  fontItalic: APP_FONTS.LATO_ITALIC,
+  getFont: type => {
+    switch (type) {
+      case 'light':
+        return APP_FONTS.NANITOSANS_LIGHT;
+      case 'regular':
+        return APP_FONTS.NANITOSANS_REGULAR;
+      case 'bold':
+        return APP_FONTS.NUNITOSANS_BOLD;
+      case 'italic':
+        return APP_FONTS.NUNITOSANS_ITALIC;
+      case 'extraBold':
+        return APP_FONTS.NUNITOSANS_ExtraBold;
+      case 'semiBold':
+        return APP_FONTS.NUNITOSANS_SEMIBOLD;
+      default:
+        return APP_FONTS.LATO_REGULAR;
+    }
+  },
+  fontLight: APP_FONTS.NANITOSANS_LIGHT,
+  fontRegular: APP_FONTS.NANITOSANS_REGULAR,
+  fontBold: APP_FONTS.NUNITOSANS_BOLD,
+  fontItalic: APP_FONTS.NUNITOSANS_ITALIC,
+  fontSemiBold: APP_FONTS.NUNITOSANS_SEMIBOLD,
+  fontExtraBold: APP_FONTS.NUNITOSANS_ExtraBold,
   width,
   height,
   iPhoneX,

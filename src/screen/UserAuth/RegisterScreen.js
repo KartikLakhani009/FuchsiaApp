@@ -31,7 +31,9 @@ class RegisterScreen extends Component {
               </TouchableOpacity>
             </View>
             <Text style={[commonstyles.title, {}]}>Register</Text>
-            <Text style={styles.subTitle}>Join our event platform.</Text>
+            <Text style={[commonstyles.subTitle, styles.subTitle]}>
+              Join our event platform.
+            </Text>
             <RegisterFrom {...this.props} />
           </ScrollView>
         </KeyboardAvoidingView>
@@ -47,9 +49,7 @@ const styles = StyleSheet.create({
     marginHorizontal: AppStyle.countPixelRatio(23),
   },
   subTitle: {
-    fontSize: AppStyle.fontSizeH4,
-    color: AppStyle.COLOR.slateGrey,
-    marginBottom: AppStyle.countPixelRatio(35.5),
+    marginBottom: AppStyle.countPixelRatio(20),
   },
   backLogo: {
     marginTop: AppStyle.countPixelRatio(25),

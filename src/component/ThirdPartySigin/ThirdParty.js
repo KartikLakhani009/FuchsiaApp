@@ -35,8 +35,8 @@ class ThirdParty extends Component {
                 style={[
                   styles.imgCommon,
                   {
-                    height: AppStyle.responsiveHeight(3.6),
-                    width: AppStyle.responsiveWidth(3.6),
+                    height: AppStyle.responsiveHeight(3),
+                    width: AppStyle.responsiveWidth(3),
                     resizeMode: 'cover',
                   },
                 ]}
@@ -57,8 +57,8 @@ class ThirdParty extends Component {
                 style={[
                   styles.imgCommon,
                   {
-                    height: AppStyle.responsiveHeight(3.6),
-                    width: AppStyle.responsiveWidth(8),
+                    height: AppStyle.responsiveHeight(3),
+                    width: AppStyle.responsiveWidth(7),
                     resizeMode: 'cover',
                   },
                 ]}
@@ -85,8 +85,8 @@ class ThirdParty extends Component {
                 style={[
                   styles.imgCommon,
                   {
-                    height: AppStyle.responsiveHeight(3.6),
-                    width: AppStyle.responsiveWidth(5.5),
+                    height: AppStyle.responsiveHeight(3),
+                    width: AppStyle.responsiveWidth(5),
                     //   resizeMode: 'cover',
                   },
                 ]}
@@ -104,31 +104,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'flex-end',
-    // backgroundColor: 'red',
-    // bottom: 0,
-    // position: 'absolute',
-    marginTop: AppStyle.countPixelRatio(70),
+    marginTop: AppStyle.countPixelRatio(60),
   },
 
   lblText: {
     color: AppStyle.COLOR.slateGrey,
     fontSize: AppStyle.fontSizeParagraph,
     marginRight: '2.5%',
+    fontFamily: AppStyle.fontSemiBold,
   },
   BtnView: {
     flexDirection: 'row',
-    // justifyContent: 'space-between',
     marginTop: AppStyle.countPixelRatio(23.3),
   },
   BtnCommon: {
-    width: AppStyle.responsiveWidth(25),
-    height: AppStyle.responsiveHeight(8.3),
-    // backgroundColor: 'red',
-    // alignSelf: 'center',
-    // borderWidth: 1,
-    marginRight: AppStyle.countPixelRatio(12),
-    marginLeft: AppStyle.countPixelRatio(12),
+    width: AppStyle.countPixelRatio(94),
+    height: AppStyle.countPixelRatio(51.3),
+    marginRight: AppStyle.countPixelRatio(14),
+    marginLeft: AppStyle.countPixelRatio(14),
     borderRadius: AppStyle.countPixelRatio(6),
   },
   imgCommon: {

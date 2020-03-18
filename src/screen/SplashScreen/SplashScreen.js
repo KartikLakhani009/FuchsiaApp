@@ -20,8 +20,6 @@ import {USERSTORE} from '../../statics/GlobalStatics';
 
 class SplashScreen extends Component {
   async componentDidMount() {
-    console.log('executive now :');
-
     await AsyncStorage.getItem(USERSTORE)
       .then(res => {
         if (res != null) {
@@ -57,14 +55,7 @@ class SplashScreen extends Component {
             <View style={styles.loginView}>
               <Text style={styles.loginText}>Already have an account?</Text>
               <TouchableOpacity onPress={() => navigate('LoginScreen')}>
-                <Text
-                  style={{
-                    color: AppStyle.COLOR.windowsBlue,
-                    fontWeight: 'bold',
-                    fontSize: AppStyle.fontSizeParagraph,
-                  }}>
-                  {' Login'}
-                </Text>
+                <Text style={styles.loginLink}>{' Login'}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -95,6 +86,7 @@ const styles = StyleSheet.create({
     color: AppStyle.COLOR.windowsBlue,
     textAlign: 'center',
     fontSize: AppStyle.fontSizeParagraph,
+    fontFamily: AppStyle.fontSemiBold,
   },
   appBkg: {
     flex: 1,
@@ -119,5 +111,12 @@ const styles = StyleSheet.create({
   loginText: {
     color: AppStyle.COLOR.coolGrey,
     fontSize: AppStyle.fontSizeParagraph,
+    fontFamily: AppStyle.fontSemiBold,
+  },
+  loginLink: {
+    color: AppStyle.COLOR.windowsBlue,
+    fontWeight: 'bold',
+    fontSize: AppStyle.fontSizeParagraph,
+    fontFamily: AppStyle.fontExtraBold,
   },
 });

@@ -2,14 +2,11 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
 //styles
-import commonstyles from '../Config/commanStyle';
 import AppStyle from '../Config/AppStyle';
 
 class UserDetailsScreen extends Component {
   render() {
-    // console.log('UserDetailsScreen : Props : ', this.props);
-    const {userinfo} = this.props.navigation.state.params;
-    const userInfo = userinfo;
+    const {userInfo} = this.props.navigation.state.params;
     return (
       <View style={styles.MainContainer}>
         <View style={styles.ProfileBackground}>
@@ -43,8 +40,6 @@ const styles = StyleSheet.create({
   },
   MainContainer: {
     flex: 1,
-    // height: Appstyle.responsiveHeight(50),
-    // backgroundColor: 'yellow',
   },
   ProfileBackground: {
     backgroundColor: AppStyle.COLOR.windowsBlue,
@@ -55,9 +50,9 @@ const styles = StyleSheet.create({
   ImageStyle: {
     height: AppStyle.countPixelRatio(150),
     width: AppStyle.countPixelRatio(150),
-    borderRadius: 90,
+    borderRadius: AppStyle.countPixelRatio(150 / 2),
     marginTop: AppStyle.responsiveHeight(3.5),
-    marginBottom: 10,
+    marginBottom: AppStyle.countPixelRatio(10),
   },
 
   nameStyle: {
@@ -68,20 +63,14 @@ const styles = StyleSheet.create({
     fontSize: AppStyle.fontSizeH3_4,
   },
   btnStyle: {
-    // marginTop: 15,
-    // backgroundColor: 'green',
-    // height: AppStyle.responsiveHeight(5),
-    // width: AppStyle.responsiveWidth(50),
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   btnMainContainer: {
     flex: 1,
-    // backgroundColor: 'red',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-
     marginBottom: AppStyle.responsiveHeight(3.5),
     marginRight: AppStyle.responsiveWidth(6),
     backgroundColor: 'transparent',

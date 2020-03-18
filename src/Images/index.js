@@ -7,4 +7,5 @@ export const AppImages = {
   GPlusLogo: require('./G2.png'),
   FBLogo: require('./FB2.png'),
   TwiterLogo: require('./TwitterV2.png'),
+  InvisibleLogo: require('./invisible.png'),
 };

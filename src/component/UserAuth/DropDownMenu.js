@@ -26,8 +26,6 @@ const DropDownList = props => {
           onValueChange={(itemValue, itemIndex) =>
             onChangeItem(itemValue, itemIndex)
           }
-          //TODO : Error ReferenceError: onchange is not defined
-          // onValueChange={onchange}
           {...inputProps}
           {...pickerProps}>
           {children}
@@ -56,22 +54,19 @@ const styles = StyleSheet.create({
   label: {
     color: AppStyle.COLOR.slateGrey,
     fontSize: AppStyle.fontSizeParagraph,
-    // marginTop: '2%',
   },
   input: {
     flex: 1,
-    height: AppStyle.responsiveHeight(6),
-    // width: '70%',
+    height: AppStyle.countPixelRatio(50),
     borderWidth: 1,
     borderColor: AppStyle.COLOR.Zumthor,
     borderRadius: AppStyle.countPixelRatio(5),
-    backgroundColor: '#f9f9f9',
-    marginBottom: AppStyle.countPixelRatio(10),
+    backgroundColor: AppStyle.COLOR.WHITE,
+    marginBottom: AppStyle.countPixelRatio(8),
     fontSize: AppStyle.fontSizeParagraph,
+    fontFamily: AppStyle.fontSemiBold,
   },
   error: {
-    // margin: '1%',
-    // marginBottom: '1.5%',
     color: AppStyle.COLOR.RED,
     fontSize: AppStyle.fontSizeH4_5,
   },

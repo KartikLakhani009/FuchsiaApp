@@ -39,19 +39,16 @@ const TextFunc = props => {
         />
         {TextVisible && (
           <TouchableOpacity
-            style={styles.PassVisibleStyleView}
+            style={styles.passVisibleStyleView}
             onPress={VisiblityAction}>
             <Image
               source={AppImages.PassVisible}
-              style={styles.PassVisibleStyle}
+              style={styles.passVisibleStyle}
             />
           </TouchableOpacity>
         )}
       </View>
-      {/* <Text style={styles.error}>
-        {touched && error ? '* ' + {error} : null}
-      </Text> */}
-      {touched && error && <Text style={{color: 'red'}}>{error}</Text>}
+      {touched && error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 };
@@ -59,42 +56,40 @@ export default TextFunc;
 
 const styles = StyleSheet.create({
   inputView: {
-    marginTop: AppStyle.countPixelRatio(10),
+    marginTop: AppStyle.countPixelRatio(4),
     flexDirection: 'row',
     width: '100%',
   },
   input: {
-    height: AppStyle.responsiveHeight(6),
+    height: AppStyle.countPixelRatio(50),
     width: '100%',
     borderWidth: 1,
     borderColor: AppStyle.COLOR.Zumthor,
     borderRadius: AppStyle.countPixelRatio(5),
-    backgroundColor: '#f9f9f9',
-    marginBottom: AppStyle.countPixelRatio(10),
+    backgroundColor: AppStyle.COLOR.WHITE,
+    marginBottom: AppStyle.countPixelRatio(8),
     fontSize: AppStyle.fontSizeParagraph,
+    fontFamily: AppStyle.fontSemiBold,
   },
   label: {
     color: AppStyle.COLOR.slateGrey,
     fontSize: AppStyle.fontSizeParagraph,
-    // marginTop: '2%',
+    fontFamily: AppStyle.fontSemiBold,
   },
   error: {
-    // margin: '1%',
-    // marginBottom: '1.5%',
     color: AppStyle.COLOR.RED,
     fontSize: AppStyle.fontSizeH4_5,
+    fontFamily: AppStyle.fontRegular,
   },
-  PassVisibleStyle: {
-    height: 15,
-    width: 25,
+  passVisibleStyle: {
+    height: AppStyle.countPixelRatio(11),
+    width: AppStyle.countPixelRatio(17),
     resizeMode: 'stretch',
   },
-  PassVisibleStyleView: {
+  passVisibleStyleView: {
     right: '0%',
     position: 'absolute',
-    // alignSelf: 'center',
-    paddingTop: AppStyle.countPixelRatio(13.3),
+    paddingTop: AppStyle.countPixelRatio(20.3),
     paddingRight: AppStyle.countPixelRatio(13.3),
-    // backgroundColor: 'red',
   },
 });

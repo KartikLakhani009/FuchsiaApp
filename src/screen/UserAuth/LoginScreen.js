@@ -11,9 +11,7 @@ import {
 
 //component
 import LoginForm from '../../component/UserAuth/Login-Form';
-import Loader from '../../component/LoderModel/Loader';
 import ThirdParty from '../../component/ThirdPartySigin/ThirdParty';
-
 import withloader from '../../hoc/withloader';
 
 //styles
@@ -22,28 +20,15 @@ import AppStyle from '../../Config/AppStyle';
 
 import {AppImages} from '../../Images/index';
 
-import {USERSTORE} from '../../statics/GlobalStatics';
-
-//APPName do it later
-import app_Details from '../../../app.json';
-
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    const {LoaderValue, LoaderFired} = this.props;
-    if (LoaderValue == true) {
-      LoaderFired(false);
-    }
-  }
-
   render() {
-    const {navigation, LoaderValue} = this.props;
+    const {navigation} = this.props;
     return (
       <View style={styles.container}>
-        <Loader loaderShow={LoaderValue} />
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Image source={AppImages.BackLogo} style={styles.backLogo} />
@@ -52,7 +37,7 @@ class LoginScreen extends Component {
         <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
           <ScrollView style={{flex: 1}}>
             <Text style={[commonstyles.title, {}]}>Login</Text>
-            <Text style={styles.SubTitle}>
+            <Text style={[commonstyles.subTitle, styles.subTitle]}>
               Login to join the DigiEvent platform.
             </Text>
             <LoginForm {...this.props} />
@@ -70,20 +55,17 @@ export default withloader(LoginScreen);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
     marginHorizontal: AppStyle.countPixelRatio(23),
-    // borderStartColor: '#ffffff',
   },
   backLogo: {
     marginTop: AppStyle.countPixelRatio(25),
     height: AppStyle.countPixelRatio(20),
     width: AppStyle.countPixelRatio(12),
   },
-  SubTitle: {
-    fontSize: AppStyle.fontSizeH4,
-    color: AppStyle.COLOR.slateGrey,
-    marginBottom: '15%',
+  subTitle: {
+    marginBottom: '18%',
+
+    marginTop: AppStyle.countPixelRatio(5),
   },
 
   thirdPartyStyle: {

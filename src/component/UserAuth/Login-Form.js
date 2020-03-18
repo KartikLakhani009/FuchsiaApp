@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
-
 import LinearGradient from 'react-native-linear-gradient';
 
 import {connect} from 'react-redux';
@@ -14,7 +13,6 @@ import TextFunc from './TextAuthFunc';
 //lib
 import validate from '../../lib/validation';
 import api from '../../lib/API/index';
-
 import {USERSTORE, LOGINUSER} from '../../statics/GlobalStatics';
 
 //styles
@@ -28,38 +26,34 @@ class LoginForm extends Component {
   }
 
   LoginAction = async values => {
-    // console.log(' LoGin Action Values : ', values);
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
     };
+
     let res = await api(LOGINUSER, data, 'post', null);
     if (res.title == 'error') {
       alert('invalid access');
     } else {
       data.token = res.json.token;
-      // console.log('Final Store Data : ', data);
       await AsyncStorage.setItem(USERSTORE, JSON.stringify(data))
         .then(res => this.props.navigation.navigate('UserListScreen'))
         .catch(err => {
           alert('There is Aysn Problem : try again');
-          console.error('Login-Form  Async Error :  ', err);
+          console.log('Login-Form  Async Error :  ', err);
           return err;
         });
     }
   };
 
   setPasswordVisibility = () => {
-    console.log('before setPasswordVisibility : ', this.state.hidePassword);
     this.setState({hidePassword: !this.state.hidePassword});
-    console.log('after setPasswordVisibility : ', this.state.hidePassword);
   };
 
   render() {
-    console.log('Password visiblity status : ', this.state.hidePassword);
     const {handleSubmit} = this.props;
     return (
-      <View style={{flex: 1, marginTop: '4%'}}>
+      <View style={{flex: 1}}>
         <Field
           name="Email"
           refField={ref => (this['Email'] = ref)}
@@ -114,7 +108,6 @@ class LoginForm extends Component {
 
 withForm = reduxForm({
   form: 'Login',
-  // enableReinitialize: true,
   validate,
 });
 
