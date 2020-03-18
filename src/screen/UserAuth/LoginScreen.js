@@ -46,51 +46,17 @@ class LoginScreen extends Component {
         <Loader loaderShow={LoaderValue} />
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={AppImages.BackLogo} style={styles.BackLogo} />
+            <Image source={AppImages.BackLogo} style={styles.backLogo} />
           </TouchableOpacity>
         </View>
         <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
           <ScrollView style={{flex: 1}}>
-            <Text style={[commonstyles.Title, {}]}>Login</Text>
+            <Text style={[commonstyles.title, {}]}>Login</Text>
             <Text style={styles.SubTitle}>
               Login to join the DigiEvent platform.
             </Text>
             <LoginForm {...this.props} />
-
-            {/* <View style={{marginTop: '5%'}}>
-              <TouchableOpacity
-                style={[commonstyles.btnSubmit]}
-                onPress={() => {
-                  navigate('RegisterScreen');
-                }}>
-                <Text style={commonstyles.btnText}>Registration</Text>
-              </TouchableOpacity>
-            </View> */}
-            {/* <View style={{marginTop: '5%'}}>
-              <TouchableOpacity
-                style={{
-                  minWidth: 150,
-                  height: 50,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#2AC062',
-                  display: 'flex',
-                  borderRadius: 5,
-                  shadowColor: '#2AC062',
-                  shadowOpacity: 0.4,
-                  shadowRadius: 20,
-                  shadowOffset: {height: 10, width: 5},
-                }}
-                onPress={() => {
-                  navigate('UserListScreen');
-                }}>
-                <Text
-                  style={{color: 'white', textAlign: 'center', fontSize: 16}}>
-                  Bypass
-                </Text>
-              </TouchableOpacity>
-            </View> */}
-            <View style={styles.ThirdParty}>
+            <View style={styles.thirdPartyStyle}>
               <ThirdParty />
             </View>
           </ScrollView>
@@ -109,7 +75,7 @@ const styles = StyleSheet.create({
     marginHorizontal: AppStyle.countPixelRatio(23),
     // borderStartColor: '#ffffff',
   },
-  BackLogo: {
+  backLogo: {
     marginTop: AppStyle.countPixelRatio(25),
     height: AppStyle.countPixelRatio(20),
     width: AppStyle.countPixelRatio(12),
@@ -120,12 +86,8 @@ const styles = StyleSheet.create({
     marginBottom: '15%',
   },
 
-  ThirdParty: {
-    // bottom: AppStyle.countPixelRatio(0),
-    // position: 'absolute',
-    // marginTop: '55%',
+  thirdPartyStyle: {
     justifyContent: 'flex-end',
     alignItems: 'center',
-    // flex: 1,
   },
 });

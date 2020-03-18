@@ -98,13 +98,13 @@ class LoginForm extends Component {
           </TouchableOpacity>
         </LinearGradient>
 
-        <View style={styles.ForgetView}>
-          <Text style={styles.ForgetText}>Forgotten your login details?</Text>
+        <View style={styles.forgetView}>
+          <Text style={styles.forgetText}>Forgotten your login details?</Text>
           <TouchableOpacity
             onPress={() => {
               alert('button pressed');
             }}>
-            <Text style={styles.ForgetLink}> Get help login</Text>
+            <Text style={styles.forgetLink}> Get help login</Text>
           </TouchableOpacity>
         </View>
       </View>

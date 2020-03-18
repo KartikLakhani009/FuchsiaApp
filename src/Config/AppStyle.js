@@ -16,7 +16,16 @@ const isTablet = () => {
     return height / width <= 1.6;
   }
 };
-const APP_FONTS = {};
+const APP_FONTS = {
+  NANITOSANS_LIGHT: isIphone ? 'NunitoSans-Light' : 'NunitoSans-Light',
+  NANITOSANS_REGULAR: isIphone ? 'NunitoSans-Regular' : 'NunitoSans-Regular',
+  NUNITOSANS_BOLD: isIphone ? 'NunitoSans-Bold' : 'NunitoSans-Bold',
+  NUNITOSANS_ITALIC: isIphone ? 'NunitoSans-Italic' : 'NunitoSans-Italic',
+  NUNITOSANS_SEMIBOLD: isIphone ? 'NunitoSans-SemiBold' : 'NunitoSans-SemiBold',
+  NUNITOSANS_ExtraBold: isIphone
+    ? 'NunitoSans-ExtraBold'
+    : 'NunitoSans-ExtraBold',
+};
 export default {
   countPixelRatio: size => size * ratioCount,
   responsiveHeight: size => size * heightPer,

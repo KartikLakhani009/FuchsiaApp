@@ -30,14 +30,11 @@ class RegisterFrom extends Component {
   }
 
   Register = async values => {
-    // console.log('values :', values);
     let data = {
       email: values.Email.trim().toLowerCase(),
       password: values.Password,
     };
     let res = await api(REGISTERUSER, data, 'post', null);
-
-    // console.log('Register-From :  res For API : ', res);
 
     if (res.title == 'error') {
       alert('Registration error (form token)');
@@ -49,16 +46,14 @@ class RegisterFrom extends Component {
         })
         .catch(error => {
           alert('There is Async Problem');
-          console.error('Reguster-Form Asycn Error : ', error);
+          console.log('Reguster-Form Asycn Error : ', error);
           return error;
         });
     }
   };
 
   setPasswordVisibility = () => {
-    console.log('before setPasswordVisibility : ', this.state.hidePassword);
     this.setState({hidePassword: !this.state.hidePassword});
-    console.log('after setPasswordVisibility : ', this.state.hidePassword);
   };
 
   getPickerValue = (itemValue, itemIndex) => {
@@ -66,8 +61,6 @@ class RegisterFrom extends Component {
   };
 
   render() {
-    // console.log('Register-From : props : ', this.props);
-
     const {handleSubmit, navigation} = this.props;
     return (
       <View>
@@ -105,15 +98,6 @@ class RegisterFrom extends Component {
           returnKeyType={'next'}
           onChangeItem={this.getPickerValue}
           component={DropDownList}>
-          {/* <Picker.Item>
-            <Image
-              source={AppImages.AmericanFlag}
-              style={{height: 50, width: 50}}
-            />
-          </Picker.Item>
-          <Picker.Item>
-            <Image source={AppImages.FBLogo} style={{height: 50, width: 50}} />
-          </Picker.Item> */}
           <Picker.Item label="IND" value="India" />
           <Picker.Item
             label="US"
@@ -159,12 +143,12 @@ class RegisterFrom extends Component {
             <Text style={styles.btnText}>Register</Text>
           </TouchableOpacity>
         </LinearGradient>
-        <View style={[styles.ForgetView, {}]}>
-          <Text style={styles.ForgetText}>
+        <View style={[styles.forgetView, {}]}>
+          <Text style={styles.forgetText}>
             If you have already have Registered?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={styles.ForgetLink}> Login</Text>
+            <Text style={styles.forgetLink}> Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -174,11 +158,7 @@ class RegisterFrom extends Component {
 
 withForm = reduxForm({
   form: 'Register',
-  // enableReinitialize: true,
   validate: validate,
-  // onSubmitSuccess: (result, dispatch, props) => {
-  //   return props.navigation.navigate('WelcomeT');
-  // },
 });
 
 mapStateToProps = state => {

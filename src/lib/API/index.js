@@ -26,7 +26,7 @@ export default async function api(path, params, method, token) {
       }
     })
     .then(json => {
-      console.log('API Data : ', json);
+      // console.log('API Data : ', json);
       if (json.title == 'error') return json;
       data = {
         title: 'succes',

@@ -7,7 +7,6 @@ export default StyleSheet.create({
     height: AppStyle.responsiveHeight(6.5),
     alignItems: 'center',
     justifyContent: 'center',
-    // backgroundColor: AppStyle.COLOR.windowsBlue,
     display: 'flex',
     borderRadius: AppStyle.countPixelRatio(5),
     shadowColor: AppStyle.COLOR.darkSkyBlue,
@@ -16,10 +15,9 @@ export default StyleSheet.create({
     shadowOffset: {height: 10, width: 5},
     elevation: 2,
     marginTop: AppStyle.countPixelRatio(22),
-    // marginTop: '2%',
   },
   btnText: {color: 'white', fontSize: AppStyle.fontSizeParagraph},
-  Title: {
+  title: {
     fontSize: AppStyle.fontSizeH1_2,
     color: AppStyle.COLOR.darkIndigo,
     fontWeight: 'bold',
@@ -38,14 +36,14 @@ export default StyleSheet.create({
   codestyleView: {
     marginTop: AppStyle.countPixelRatio(5),
   },
-  ForgetView: {
+  forgetView: {
     flexDirection: 'row',
     marginTop: AppStyle.countPixelRatio(10),
     marginBottom: AppStyle.countPixelRatio(15),
     justifyContent: 'center',
   },
-  ForgetText: {color: AppStyle.COLOR.coolGrey, fontSize: AppStyle.fontSizeH4_5},
-  ForgetLink: {
+  forgetText: {color: AppStyle.COLOR.coolGrey, fontSize: AppStyle.fontSizeH4_5},
+  forgetLink: {
     color: AppStyle.COLOR.darkSkyBlue,
     fontSize: AppStyle.fontSizeH4_5,
   },

@@ -27,11 +27,11 @@ class RegisterScreen extends Component {
           <ScrollView>
             <View>
               <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image source={AppImages.BackLogo} style={styles.BackLogo} />
+                <Image source={AppImages.BackLogo} style={styles.backLogo} />
               </TouchableOpacity>
             </View>
-            <Text style={[commonstyles.Title, {}]}>Register</Text>
-            <Text style={styles.SubTitle}>Join our event platform.</Text>
+            <Text style={[commonstyles.title, {}]}>Register</Text>
+            <Text style={styles.subTitle}>Join our event platform.</Text>
             <RegisterFrom {...this.props} />
           </ScrollView>
         </KeyboardAvoidingView>
@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: AppStyle.countPixelRatio(23),
   },
-  SubTitle: {
+  subTitle: {
     fontSize: AppStyle.fontSizeH4,
     color: AppStyle.COLOR.slateGrey,
     marginBottom: AppStyle.countPixelRatio(35.5),
   },
-  BackLogo: {
+  backLogo: {
     marginTop: AppStyle.countPixelRatio(25),
     height: AppStyle.countPixelRatio(20),
     width: AppStyle.countPixelRatio(12),

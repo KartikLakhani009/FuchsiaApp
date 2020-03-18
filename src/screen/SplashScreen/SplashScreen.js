@@ -6,7 +6,6 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -23,14 +22,10 @@ class SplashScreen extends Component {
   async componentDidMount() {
     console.log('executive now :');
 
-    // await AsyncStorage.clear();
-
     await AsyncStorage.getItem(USERSTORE)
       .then(res => {
-        // console.log('Login Screen ->res : ', res);
         if (res != null) {
           user = JSON.parse(res);
-          // console.log('User  :', user);
           return this.props.navigation.navigate('UserListScreen', {
             userInfo: user,
           });
@@ -40,34 +35,27 @@ class SplashScreen extends Component {
         console.log('err : ', err);
         return 'err';
       });
-
-    //   console.log('Result :  ', result);
   }
 
   render() {
-    const {
-      navigation: {navigate},
-    } = this.props;
-    console.log('Start now : ');
-    // console.log('Navigation Stack  : ', this.props.navigation);
+    const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <ImageBackground
           source={AppImages.SplashScreen}
           resizeMode={'stretch'}
-          style={styles.APPBKG}>
+          style={styles.appBkg}>
           <View style={{flex: 1}}>
-            <Image source={AppImages.SplashLogo} style={styles.APPLOGO} />
-            {/* <Text style={styles.APPNAME}>Fuchsia</Text> */}
-            <View style={styles.ViewRegister}>
+            <Image source={AppImages.SplashLogo} style={styles.appLogo} />
+            <View style={styles.viewRegister}>
               <TouchableOpacity
                 style={styles.btnRegister}
                 onPress={() => navigate('RegisterScreen')}>
-                <Text style={styles.TextRegister}>Register</Text>
+                <Text style={styles.textRegister}>Register</Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.LoginView}>
-              <Text style={styles.LoginText}>Already have an account?</Text>
+            <View style={styles.loginView}>
+              <Text style={styles.loginText}>Already have an account?</Text>
               <TouchableOpacity onPress={() => navigate('LoginScreen')}>
                 <Text
                   style={{
@@ -90,59 +78,45 @@ export default SplashScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // backgroundColor: 'red',
   },
-  APPNAME: {
-    fontSize: 48,
-    color: AppStyle.COLOR.WHITE_OFF,
-    marginHorizontal: '10%',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: '30%',
-  },
-  ViewRegister: {
+  viewRegister: {
     left: AppStyle.countPixelRatio(25),
     marginTop: AppStyle.countPixelRatio(120),
   },
   btnRegister: {
     backgroundColor: '#fff',
-    width: AppStyle.responsiveWidth(40),
-    height: AppStyle.responsiveHeight(8),
+    width: AppStyle.countPixelRatio(160),
+    height: AppStyle.countPixelRatio(50),
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: AppStyle.countPixelRatio(6),
   },
-  TextRegister: {
+  textRegister: {
     color: AppStyle.COLOR.windowsBlue,
     textAlign: 'center',
     fontSize: AppStyle.fontSizeParagraph,
   },
-  APPBKG: {
+  appBkg: {
     flex: 1,
     width: AppStyle.width,
-    height: '100%',
+    height: AppStyle.height,
     resizeMode: 'cover',
   },
-  APPLOGO: {
+  appLogo: {
     top: AppStyle.countPixelRatio(70),
     left: AppStyle.countPixelRatio(25),
     height: AppStyle.countPixelRatio(86),
     width: AppStyle.countPixelRatio(280),
     resizeMode: 'stretch',
   },
-  LoginView: {
-    // marginBottom: AppStyle.countPixelRatio(74),
+  loginView: {
     alignItems: 'flex-end',
-    // alignSelf: 'flex-end',
-    // backgroundColor: 'red',
     bottom: AppStyle.countPixelRatio(60),
     position: 'absolute',
     flexDirection: 'row',
     left: AppStyle.countPixelRatio(25),
   },
-  LoginText: {
+  loginText: {
     color: AppStyle.COLOR.coolGrey,
     fontSize: AppStyle.fontSizeParagraph,
   },
