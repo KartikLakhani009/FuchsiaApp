@@ -87,7 +87,6 @@ class ThirdParty extends Component {
                   {
                     height: AppStyle.responsiveHeight(3),
                     width: AppStyle.responsiveWidth(5),
-                    //   resizeMode: 'cover',
                   },
                 ]}
               />
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: AppStyle.countPixelRatio(60),
   },
-
   lblText: {
     color: AppStyle.COLOR.slateGrey,
     fontSize: AppStyle.fontSizeParagraph,

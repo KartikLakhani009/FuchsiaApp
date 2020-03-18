@@ -8,15 +8,15 @@ class UserDetailsScreen extends Component {
   render() {
     const {userInfo} = this.props.navigation.state.params;
     return (
-      <View style={styles.MainContainer}>
-        <View style={styles.ProfileBackground}>
+      <View style={styles.mainContainer}>
+        <View style={styles.profileBackground}>
           <Image
             source={{
               uri: userInfo.avatar
                 ? userInfo.avatar
                 : 'https://cdn.pixabay.com/photo/2013/07/21/13/00/rose-165819__340.jpg',
             }}
-            style={styles.ImageStyle}></Image>
+            style={styles.imageStyle}></Image>
           <Text style={styles.nameStyle}>
             {userInfo.first_name
               ? userInfo.first_name + ' ' + userInfo.last_name
@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  MainContainer: {
+  mainContainer: {
     flex: 1,
   },
-  ProfileBackground: {
+  profileBackground: {
     backgroundColor: AppStyle.COLOR.windowsBlue,
     height: AppStyle.responsiveHeight(15),
     alignItems: 'center',
   },
 
-  ImageStyle: {
+  imageStyle: {
     height: AppStyle.countPixelRatio(150),
     width: AppStyle.countPixelRatio(150),
     borderRadius: AppStyle.countPixelRatio(150 / 2),
@@ -65,14 +65,5 @@ const styles = StyleSheet.create({
   btnStyle: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-
-  btnMainContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    marginBottom: AppStyle.responsiveHeight(3.5),
-    marginRight: AppStyle.responsiveWidth(6),
-    backgroundColor: 'transparent',
   },
 });

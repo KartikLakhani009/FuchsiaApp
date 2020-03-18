@@ -13,7 +13,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {AppImages} from '../../Images/index';
 
 //styles
-import commonstyles from '../../Config/commanStyle';
 import AppStyle from '../../Config/AppStyle';
 
 import {USERSTORE} from '../../statics/GlobalStatics';
@@ -75,7 +74,7 @@ const styles = StyleSheet.create({
     marginTop: AppStyle.countPixelRatio(120),
   },
   btnRegister: {
-    backgroundColor: '#fff',
+    backgroundColor: AppStyle.COLOR.WHITE,
     width: AppStyle.countPixelRatio(160),
     height: AppStyle.countPixelRatio(50),
     justifyContent: 'center',

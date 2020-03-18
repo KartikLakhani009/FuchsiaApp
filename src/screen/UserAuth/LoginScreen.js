@@ -31,12 +31,12 @@ class LoginScreen extends Component {
       <View style={styles.container}>
         <View>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={AppImages.BackLogo} style={styles.backLogo} />
+            <Image source={AppImages.BackLogo} style={commonstyles.backLogo} />
           </TouchableOpacity>
         </View>
         <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
           <ScrollView style={{flex: 1}}>
-            <Text style={[commonstyles.title, {}]}>Login</Text>
+            <Text style={commonstyles.title}>Login</Text>
             <Text style={[commonstyles.subTitle, styles.subTitle]}>
               Login to join the DigiEvent platform.
             </Text>
@@ -57,17 +57,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: AppStyle.countPixelRatio(23),
   },
-  backLogo: {
-    marginTop: AppStyle.countPixelRatio(25),
-    height: AppStyle.countPixelRatio(20),
-    width: AppStyle.countPixelRatio(12),
-  },
   subTitle: {
     marginBottom: '18%',
 
     marginTop: AppStyle.countPixelRatio(5),
   },
-
   thirdPartyStyle: {
     justifyContent: 'flex-end',
     alignItems: 'center',

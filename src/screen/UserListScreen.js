@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   Alert,
+  Image,
 } from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -20,6 +21,8 @@ import {USERSTORE} from '../statics/GlobalStatics';
 import commonstyles from '../Config/commanStyle';
 import AppStyle from '../Config/AppStyle';
 import {NavigationActions} from 'react-navigation';
+
+import {AppImages} from '../Images/index';
 
 class UserListScreen extends Component {
   constructor(props) {
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerText: {
-    marginHorizontal: '5%',
+    marginLeft: '5%',
     fontSize: AppStyle.fontSizeH3,
     color: AppStyle.COLOR.WHITE,
     fontFamily: AppStyle.fontExtraBold,
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
   viewLogout: {
     backgroundColor: AppStyle.COLOR.RED,
     right: '4%',
-    top: '16%',
+    top: '17.5%',
     position: 'absolute',
     padding: AppStyle.countPixelRatio(10),
     marginBottom: '1%',

@@ -51,4 +51,9 @@ export default StyleSheet.create({
     fontSize: AppStyle.fontSizeH4_5,
     fontFamily: AppStyle.fontSemiBold,
   },
+  backLogo: {
+    marginTop: AppStyle.countPixelRatio(25),
+    height: AppStyle.countPixelRatio(20),
+    width: AppStyle.countPixelRatio(12),
+  },
 });
