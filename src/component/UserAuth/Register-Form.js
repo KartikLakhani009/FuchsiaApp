@@ -139,6 +139,7 @@ class RegisterFrom extends Component {
           end={{x: 1, y: 0}}
           style={styles.btnSubmit}>
           <CustomButton
+            buttonMode="TextButton"
             label={'Register'}
             lableStyle={styles.btnText}
             buttonStyle={{width: '100%', alignItems: 'center'}}
@@ -150,6 +151,7 @@ class RegisterFrom extends Component {
             If you have already have Registered?
           </Text>
           <CustomButton
+            buttonMode="TextButton"
             label={' Login'}
             lableStyle={styles.forgetLink}
             btnAction={() => navigation.navigate('LoginScreen')}
