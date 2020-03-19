@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
+// import LinearGradient from 'react-native-linear-gradient';
 
 import AppStyle from '../../Config/AppStyle';
 
 import {AppImages} from '../../Images/index';
 
-import ImageButton from '../ImageButton';
+import CustomButton from '../CustButton';
 
 class ThirdParty extends Component {
   render() {
@@ -20,7 +20,8 @@ class ThirdParty extends Component {
           <Text style={styles.lblText}>Continue With</Text>
         </View>
         <View style={styles.BtnView}>
-          <ImageButton
+          <CustomButton
+            buttonMode="LinearGradientButton"
             lgstyle={[
               styles.BtnCommon,
               {
@@ -40,7 +41,8 @@ class ThirdParty extends Component {
             ]}
             colors={AppStyle.FBLinearGradinent}
           />
-          <ImageButton
+          <CustomButton
+            buttonMode="LinearGradientButton"
             lgstyle={styles.BtnCommon}
             colors={AppStyle.TwitterLinearGradinent}
             start={{x: 0, y: 0}}
@@ -56,7 +58,8 @@ class ThirdParty extends Component {
             ]}
           />
 
-          <ImageButton
+          <CustomButton
+            buttonMode="LinearGradientButton"
             lgstyle={[
               styles.BtnCommon,
               {

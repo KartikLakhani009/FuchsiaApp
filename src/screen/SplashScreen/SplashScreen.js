@@ -48,6 +48,7 @@ class SplashScreen extends Component {
             <Image source={AppImages.SplashLogo} style={styles.appLogo} />
             <View style={styles.viewRegister}>
               <CustomButton
+                buttonMode="TextButton"
                 label={'Register'}
                 lableStyle={styles.textRegister}
                 buttonStyle={styles.btnRegister}
@@ -57,6 +58,7 @@ class SplashScreen extends Component {
             <View style={styles.loginView}>
               <Text style={styles.loginText}>Already have an account?</Text>
               <CustomButton
+                buttonMode="TextButton"
                 label={' Login'}
                 lableStyle={styles.loginLink}
                 btnAction={() => navigate('LoginScreen')}

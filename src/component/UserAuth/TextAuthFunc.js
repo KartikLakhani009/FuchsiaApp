@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
 import AppStyle from '../../Config/AppStyle';
 import {AppImages} from '../../Images/index';
+
+import CustomeButton from '../CustButton';
 
 const TextFunc = props => {
   const {
@@ -38,14 +33,13 @@ const TextFunc = props => {
           onSubmitEditing={onSubmitEdit}
         />
         {TextVisible && (
-          <TouchableOpacity
-            style={styles.passVisibleStyleView}
-            onPress={VisiblityAction}>
-            <Image
-              source={AppImages.PassVisible}
-              style={styles.passVisibleStyle}
-            />
-          </TouchableOpacity>
+          <CustomeButton
+            buttonMode="ImageButton"
+            buttonStyle={styles.passVisibleStyleView}
+            btnAction={VisiblityAction}
+            source={AppImages.PassVisible}
+            imageStyle={styles.passVisibleStyle}
+          />
         )}
       </View>
       {touched && error && <Text style={styles.error}>{error}</Text>}

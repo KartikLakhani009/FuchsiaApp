@@ -6,13 +6,13 @@ import LinearGradient from 'react-native-linear-gradient';
 const ImageButton = props => {
   const {
     source,
-    buttonStyle,
     imageStyle,
-    btnAction,
     colors,
     lgstyle,
     start,
     end,
+    buttonStyle,
+    btnAction,
   } = props;
   return (
     <LinearGradient colors={colors} style={lgstyle} start={start} end={end}>

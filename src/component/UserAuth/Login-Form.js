@@ -77,6 +77,7 @@ class LoginForm extends Component {
         />
         <View style={styles.codestyleView}>
           <CustomButton
+            buttonMode="TextButton"
             label={'Have invitation code?'}
             lableStyle={styles.codestyle}
           />
@@ -88,6 +89,7 @@ class LoginForm extends Component {
           end={{x: 1, y: 0}}
           style={styles.btnSubmit}>
           <CustomButton
+            buttonMode="TextButton"
             label={'Login'}
             lableStyle={styles.btnText}
             buttonStyle={{width: '100%', alignItems: 'center'}}
@@ -98,6 +100,7 @@ class LoginForm extends Component {
         <View style={styles.forgetView}>
           <Text style={styles.forgetText}>Forgotten your login details?</Text>
           <CustomButton
+            buttonMode="TextButton"
             label={' Get help login'}
             lableStyle={styles.forgetLink}
           />
