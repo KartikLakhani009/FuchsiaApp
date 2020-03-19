@@ -13,6 +13,7 @@ import {
 import LoginForm from '../../component/UserAuth/Login-Form';
 import ThirdParty from '../../component/ThirdPartySigin/ThirdParty';
 import withloader from '../../hoc/withloader';
+import BackButton from '../../component/BackButton';
 
 //styles
 import commonstyles from '../../Config/commanStyle';
@@ -30,9 +31,7 @@ class LoginScreen extends Component {
     return (
       <View style={styles.container}>
         <View>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={AppImages.BackLogo} style={commonstyles.backLogo} />
-          </TouchableOpacity>
+          <BackButton navigation={navigation} />
         </View>
         <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
           <ScrollView style={{flex: 1}}>

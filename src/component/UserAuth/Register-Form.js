@@ -11,6 +11,7 @@ import {Field, reduxForm} from 'redux-form';
 //component
 import TextFunc from './TextAuthFunc';
 import DropDownList from './DropDownMenu';
+import CustomButton from '../CustButton';
 
 //lib
 import validate from '../../lib/validation';
@@ -137,19 +138,22 @@ class RegisterFrom extends Component {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={styles.btnSubmit}>
-          <TouchableOpacity
-            style={{width: '100%', alignItems: 'center'}}
-            onPress={handleSubmit(this.Register)}>
-            <Text style={styles.btnText}>Register</Text>
-          </TouchableOpacity>
+          <CustomButton
+            label={'Register'}
+            lableStyle={styles.btnText}
+            buttonStyle={{width: '100%', alignItems: 'center'}}
+            btnAction={handleSubmit(this.Register)}
+          />
         </LinearGradient>
         <View style={[styles.forgetView, {}]}>
           <Text style={styles.forgetText}>
             If you have already have Registered?
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
-            <Text style={styles.forgetLink}> Login</Text>
-          </TouchableOpacity>
+          <CustomButton
+            label={' Login'}
+            lableStyle={styles.forgetLink}
+            btnAction={() => navigation.navigate('LoginScreen')}
+          />
         </View>
       </View>
     );

@@ -11,6 +11,7 @@ import {
 
 //component
 import RegisterFrom from '../../component/UserAuth/Register-Form';
+import BackButton from '../../component/BackButton';
 
 //styles
 import commonstyles from '../../Config/commanStyle';
@@ -26,12 +27,7 @@ class RegisterScreen extends Component {
         <KeyboardAvoidingView behavior={'height'}>
           <ScrollView>
             <View>
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                  source={AppImages.BackLogo}
-                  style={commonstyles.backLogo}
-                />
-              </TouchableOpacity>
+              <BackButton navigation={navigation} />
             </View>
             <Text style={commonstyles.title}>Register</Text>
             <Text style={[commonstyles.subTitle, styles.subTitle]}>

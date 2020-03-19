@@ -7,6 +7,8 @@ import AppStyle from '../../Config/AppStyle';
 
 import {AppImages} from '../../Images/index';
 
+import ImageButton from '../ImageButton';
+
 class ThirdParty extends Component {
   render() {
     return (
@@ -18,80 +20,61 @@ class ThirdParty extends Component {
           <Text style={styles.lblText}>Continue With</Text>
         </View>
         <View style={styles.BtnView}>
-          <LinearGradient
-            style={[
-              styles.BtnCommon,
-              {backgroundColor: AppStyle.COLOR.FACEBOOK_BLUE, marginLeft: 0},
-            ]}
-            colors={AppStyle.FBLinearGradinent}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}>
-            <TouchableOpacity
-              onPress={() => {
-                alert('button pressed');
-              }}>
-              <Image
-                source={AppImages.FBLogo}
-                style={[
-                  styles.imgCommon,
-                  {
-                    height: AppStyle.responsiveHeight(3),
-                    width: AppStyle.responsiveWidth(3),
-                    resizeMode: 'cover',
-                  },
-                ]}
-              />
-            </TouchableOpacity>
-          </LinearGradient>
-          <LinearGradient
-            style={[styles.BtnCommon, {backgroundColor: AppStyle.COLOR.azure}]}
-            colors={AppStyle.TwitterLinearGradinent}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}>
-            <TouchableOpacity
-              onPress={() => {
-                alert('button pressed');
-              }}>
-              <Image
-                source={AppImages.TwiterLogo}
-                style={[
-                  styles.imgCommon,
-                  {
-                    height: AppStyle.responsiveHeight(3),
-                    width: AppStyle.responsiveWidth(7),
-                    resizeMode: 'cover',
-                  },
-                ]}
-              />
-            </TouchableOpacity>
-          </LinearGradient>
-          <LinearGradient
-            style={[
+          <ImageButton
+            lgstyle={[
               styles.BtnCommon,
               {
-                backgroundColor: AppStyle.COLOR.GOOGLE_CINABAR,
+                marginLeft: 0,
+              },
+            ]}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            source={AppImages.FBLogo}
+            imageStyle={[
+              styles.imgCommon,
+              {
+                height: AppStyle.responsiveHeight(3),
+                width: AppStyle.responsiveWidth(3),
+                resizeMode: 'cover',
+              },
+            ]}
+            colors={AppStyle.FBLinearGradinent}
+          />
+          <ImageButton
+            lgstyle={styles.BtnCommon}
+            colors={AppStyle.TwitterLinearGradinent}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            source={AppImages.TwiterLogo}
+            imageStyle={[
+              styles.imgCommon,
+              {
+                height: AppStyle.responsiveHeight(3),
+                width: AppStyle.responsiveWidth(7),
+                resizeMode: 'cover',
+              },
+            ]}
+          />
+
+          <ImageButton
+            lgstyle={[
+              styles.BtnCommon,
+              {
                 marginRight: 0,
               },
             ]}
             colors={AppStyle.GPlusLinearGradinent}
             start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}>
-            <TouchableOpacity
-              onPress={() => {
-                alert('button pressed');
-              }}>
-              <Image
-                source={AppImages.GPlusLogo}
-                style={[
-                  styles.imgCommon,
-                  {
-                    height: AppStyle.responsiveHeight(3),
-                    width: AppStyle.responsiveWidth(5),
-                  },
-                ]}
-              />
-            </TouchableOpacity>
-          </LinearGradient>
+            end={{x: 1, y: 0}}
+            source={AppImages.GPlusLogo}
+            imageStyle={[
+              styles.imgCommon,
+              {
+                height: AppStyle.responsiveHeight(3),
+                width: AppStyle.responsiveWidth(5),
+              },
+            ]}
+          />
         </View>
       </View>
     );

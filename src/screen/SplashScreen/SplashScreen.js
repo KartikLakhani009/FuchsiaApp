@@ -17,6 +17,8 @@ import AppStyle from '../../Config/AppStyle';
 
 import {USERSTORE} from '../../statics/GlobalStatics';
 
+import CustomButton from '../../component/CustButton';
+
 class SplashScreen extends Component {
   async componentDidMount() {
     await AsyncStorage.getItem(USERSTORE)
@@ -45,17 +47,20 @@ class SplashScreen extends Component {
           <View style={{flex: 1}}>
             <Image source={AppImages.SplashLogo} style={styles.appLogo} />
             <View style={styles.viewRegister}>
-              <TouchableOpacity
-                style={styles.btnRegister}
-                onPress={() => navigate('RegisterScreen')}>
-                <Text style={styles.textRegister}>Register</Text>
-              </TouchableOpacity>
+              <CustomButton
+                label={'Register'}
+                lableStyle={styles.textRegister}
+                buttonStyle={styles.btnRegister}
+                btnAction={() => navigate('RegisterScreen')}
+              />
             </View>
             <View style={styles.loginView}>
               <Text style={styles.loginText}>Already have an account?</Text>
-              <TouchableOpacity onPress={() => navigate('LoginScreen')}>
-                <Text style={styles.loginLink}>{' Login'}</Text>
-              </TouchableOpacity>
+              <CustomButton
+                label={' Login'}
+                lableStyle={styles.loginLink}
+                btnAction={() => navigate('LoginScreen')}
+              />
             </View>
           </View>
         </ImageBackground>

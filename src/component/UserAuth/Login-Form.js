@@ -9,6 +9,7 @@ import {Field, reduxForm} from 'redux-form';
 
 //component
 import TextFunc from './TextAuthFunc';
+import CustomButton from '../CustButton';
 
 //lib
 import validate from '../../lib/validation';
@@ -75,9 +76,10 @@ class LoginForm extends Component {
           component={TextFunc}
         />
         <View style={styles.codestyleView}>
-          <TouchableOpacity>
-            <Text style={styles.codestyle}>Have invitation code?</Text>
-          </TouchableOpacity>
+          <CustomButton
+            label={'Have invitation code?'}
+            lableStyle={styles.codestyle}
+          />
         </View>
 
         <LinearGradient
@@ -85,21 +87,20 @@ class LoginForm extends Component {
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           style={styles.btnSubmit}>
-          <TouchableOpacity
-            style={{width: '100%', alignItems: 'center'}}
-            onPress={handleSubmit(this.LoginAction)}>
-            <Text style={styles.btnText}>Login</Text>
-          </TouchableOpacity>
+          <CustomButton
+            label={'Login'}
+            lableStyle={styles.btnText}
+            buttonStyle={{width: '100%', alignItems: 'center'}}
+            btnAction={handleSubmit(this.LoginAction)}
+          />
         </LinearGradient>
 
         <View style={styles.forgetView}>
           <Text style={styles.forgetText}>Forgotten your login details?</Text>
-          <TouchableOpacity
-            onPress={() => {
-              alert('button pressed');
-            }}>
-            <Text style={styles.forgetLink}> Get help login</Text>
-          </TouchableOpacity>
+          <CustomButton
+            label={' Get help login'}
+            lableStyle={styles.forgetLink}
+          />
         </View>
       </View>
     );
